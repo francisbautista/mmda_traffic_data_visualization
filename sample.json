@@ -1,0 +1,81 @@
+[
+	{
+		"year": 2014,
+		"month": 07,
+		"day": 25,
+		"hour": 00,
+		"qtr": 1,
+		"lineID": 0,
+		"stationID": 0,
+		"statusN": 1,
+		"statusS": 0
+
+	},
+	{
+		"year": 2014,
+		"month": 07,
+		"day": 25,
+		"hour": 00,
+		"qtr": 1,
+		"lineID": 0,
+		"stationID": 1,
+		"statusN": 0,
+		"statusS": 0
+	},
+	{
+		"year": 2014,
+		"month": 07,
+		"day": 25,
+		"hour": 00,
+		"qtr": 1,
+		"lineID": 0,
+		"stationID": 2,
+		"statusN": 1,
+		"statusS": 1
+	},
+	{
+		"year": 2014,
+		"month": 07,
+		"day": 25,
+		"hour": 00,
+		"qtr": 1,
+		"lineID": 0,
+		"stationID": 3,
+		"statusN": 0,
+		"statusS": 0
+	},
+	{
+		"year": 2014,
+		"month": 07,
+		"day": 25,
+		"hour": 00,
+		"qtr": 1,
+		"lineID": 0,
+		"stationID": 4,
+		"statusN": 1,
+		"statusS": 1
+	}
+	{
+		"year": 2014,
+		"month": 07,
+		"day": 25,
+		"hour": 00,
+		"qtr": 1,
+		"lineID": 0,
+		"stationID": 5,
+		"statusN": 1,
+		"statusS": 1
+	}
+	{
+		"year": 2014,
+		"month": 07,
+		"day": 25,
+		"hour": 00,
+		"qtr": 1,
+		"lineID": 0,
+		"stationID": 6,
+		"statusN": 0,
+		"statusS": 0
+	}
+]
+	
