@@ -1,3 +1,4 @@
+
 if stationID[i] == 0:
     station_writer(0, year[i],month[i],day[i],hour[i],lineID[i],stationID[i],statusN[i],statusS[i], i)
 elif stationID[i] == 1:

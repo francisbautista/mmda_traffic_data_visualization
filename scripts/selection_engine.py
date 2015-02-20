@@ -12,23 +12,27 @@ OUT_HEADER = "#year,month,day,hour,lineID,stationID,statusN,statusS\n"
 NAME_LIST = [DIR_PREFIX + s  for s in loadtxt(INPUT_FILE, dtype='a',unpack=False)]
 
 def main():
-	print "Running LINE SELECTION ENGINE:"
-	print "------------------------------"
-	line_number = raw_input('Enter a Line Number: ')
-	line_selection_engine(int(line_number))
-	time.sleep(1)
-	print "\n"
+	# print "Running LINE SELECTION ENGINE:"
+	# print "------------------------------"
+	# line_number = raw_input('Enter a Line Number: ')
+	# line_selection_engine(int(line_number))
+	# time.sleep(1)
+	# print "\n"
 	print "Running STATION SELECTION ENGINE:"
 	print "------------------------------"
 	station_isolation_engine()
 	time.sleep(1)
 	sys.exit(1)
 
+# Creates file for each station with write-append rules.
 def station_writer(num,year,month,day,hour,lineID,stationID,statusN,statusS, loop_ctr ):
-	fp=open(OUT_PREFIX+str(num),'a')
-	if(loop_ctr==0):
+	if(os.path.isfile(OUT_PREFIX+str(num))==False):
+		fp=open(OUT_PREFIX+str(num),'a')
 		fp.write(OUT_HEADER)
+	else:
+		fp=open(OUT_PREFIX+str(num),'a')
 	fp.write("%d,%d,%d,%d,%2d,%3d,%d,%d\n" % (year,month,day,hour,lineID,stationID,statusN,statusS))
+	fp.close()
 
 
 def station_isolation_engine():
@@ -36,6 +40,12 @@ def station_isolation_engine():
 	ctr = 0
 	for i in arange(len(year)):
 		ctr = ctr + 1
+
+		# TODO: Fix loop here. Only station 4 is being read
+		for j in arange(19):
+			if stationID[i]==j: # if stationID[0]==0
+				station_writer(j, year[i],month[i],day[i],hour[i],lineID[i],stationID[i],statusN[i],statusS[i], i)
+
 		percentage = ctr/float(len(year))*100
 		sys.stdout.write("\r")
 		progress = ""
@@ -46,9 +56,6 @@ def station_isolation_engine():
 				progress += " "
 		sys.stdout.write("[ %s ] %.2f%%" % (progress, percentage))
 		sys.stdout.flush()
-		for j in arange(19):
-			if stationID[i]==j:
-				station_writer(j, year[i],month[i],day[i],hour[i],lineID[i],stationID[i],statusN[i],statusS[i], i)
 
 
 #TODO Modify for stdout printing of progress bar
