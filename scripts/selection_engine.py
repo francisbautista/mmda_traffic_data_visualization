@@ -7,7 +7,9 @@ DIR_PREFIX = "../data/daily_status/"
 FN_LINE = "../output/collated_status.csv"
 OUT_PREFIX = "../output/stations/collated_station_"
 DAY_PREFIX = "../output/station_days/"
+SD_PREFIX = "../output/station_day_summary/"
 OUT_HEADER = "#year,month,day,hour,lineID,stationID,statusN,statusS\n"
+FINAL_HEADER = "lineID,stationID,day,hour,nHigh,nMed,nLow,sHigh,sMed,sLow\n"
 
 # Loop through filename list and add prefixer to each element
 NAME_LIST = [DIR_PREFIX + s  for s in loadtxt(INPUT_FILE, dtype='a',unpack=False)]
@@ -29,6 +31,19 @@ def main():
 	day_isolation_engine()
 	time.sleep(1)
 	sys.exit(1)
+
+def day_summary():
+	#lineID,stationID,day,hour,nHigh,nMed,nLow,sHigh,sMed,sLow\n
+	DIR = '../output/stations'
+	station_count = len([name for name in os.listdir(DIR) if os.path.isfile(os.path.join(DIR, name))])
+
+	for station in arange(station_day_count):
+		for day in arange(7):
+			fn = DAY_PREFIX+'s'+str(station)+'d0'+ str(day)+".csv"
+			year,month,day_stuff,hour,lineID,stationID,statusN,statusS=loadtxt(fn, usecols =(0,1,2,3,4,5,6,7), unpack=True, delimiter=",", dtype=int, skiprows = 1)
+			# for time in arange(24):
+			# 	nHigh = sum.statusN[(time==hour[i])&(statusN[])]
+
 
 def day_isolation_engine():
 	DIR = '../output/stations'
@@ -62,11 +77,11 @@ def day_isolation_engine():
 
 
 def day_writer(year,month,day,hour,lineID,stationID,statusN,statusS, station_ctr,day_ctr  ):
-	if(os.path.isfile(DAY_PREFIX+'s'+str(station_ctr)+'d0'+str(day_ctr))==False):
-		fp=open(DAY_PREFIX+'s'+str(station_ctr)+'d0'+str(day_ctr),'a')
+	if(os.path.isfile(DAY_PREFIX+'s'+str(station_ctr)+'d0'+str(day_ctr)+'.csv')==False):
+		fp=open(DAY_PREFIX+'s'+str(station_ctr)+'d0'+str(day_ctr)+'.csv','a')
 		fp.write(OUT_HEADER)
 	else:
-		fp=open(DAY_PREFIX+'s'+str(station_ctr)+'d0'+str(day_ctr),'a')
+		fp=open(DAY_PREFIX+'s'+str(station_ctr)+'d0'+str(day_ctr)+'.csv','a')
 	fp.write("%d,%d,%d,%d,%2d,%3d,%d,%d\n" % (year,month,day,hour,lineID,stationID,statusN,statusS))
 	fp.close()
 
