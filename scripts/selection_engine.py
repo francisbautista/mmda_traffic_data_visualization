@@ -1,11 +1,12 @@
-import sys, collections, os, time
+import sys, collections, os, os.path, time, datetime
 from numpy import *
 
 # Set filename list and prefixer for directory navigation
 INPUT_FILE = "../data/status_filenames.txt"
 DIR_PREFIX = "../data/daily_status/"
 FN_LINE = "../output/collated_status.csv"
-OUT_PREFIX = "../output/collated_station_"
+OUT_PREFIX = "../output/stations/collated_station_"
+DAY_PREFIX = "../output/station_days/"
 OUT_HEADER = "#year,month,day,hour,lineID,stationID,statusN,statusS\n"
 
 # Loop through filename list and add prefixer to each element
@@ -18,33 +19,71 @@ def main():
 	# line_selection_engine(int(line_number))
 	# time.sleep(1)
 	# print "\n"
-	print "Running STATION SELECTION ENGINE:"
+	# print "Running STATION SELECTION ENGINE:"
+	# print "------------------------------"
+	# station_isolation_engine()
+	# time.sleep(1)
+	# print "\n"
+	print "Running day_isolation_engine:"
 	print "------------------------------"
-	station_isolation_engine()
+	day_isolation_engine()
 	time.sleep(1)
 	sys.exit(1)
 
 def day_isolation_engine():
-	# Get file names
-	# Loop through files
-	# Isolate day using python date_time library
-	# Select for all dates and store in requisite day file
+	DIR = '../output/stations'
+	station_count = len([name for name in os.listdir(DIR) if os.path.isfile(os.path.join(DIR, name))])
+	for i in arange(station_count):
+		station_file = OUT_PREFIX + str(i)+".csv"
+		year,month,day_stuff,hour,lineID,stationID,statusN,statusS=loadtxt(station_file, usecols =(0,1,2,3,4,5,6,7), unpack=True, delimiter=",", dtype=int, skiprows = 1)
+		for k in arange(len(year)):
+			year_val = year[k]
+			month_val = month[k]
+			day_val = day_stuff[k]
+			hour_val = hour[k]
+			line_val = lineID[k]
+			station_val = stationID[k]
+			statusN_val = statusN[k]
+			statusS_val = statusS[k]
+			for j in arange(7):
+				day = datetime.datetime(year_val, month_val, day_val).weekday()
+				if (day==j):
+					day_writer(year_val,month_val,day_val,hour_val, line_val,station_val,statusN_val,statusS_val, i,j)
+			percentage = i/float(station_count)*100
+			sys.stdout.write("\r")
+			progress = ""
+			for l in range(100):
+				if l < int(percentage):
+					progress += "#"
+				else:
+					progress += " "
+			sys.stdout.write("[ %s ] %.2f%%" % (progress, percentage))
+			sys.stdout.flush()
 
+
+def day_writer(year,month,day,hour,lineID,stationID,statusN,statusS, station_ctr,day_ctr  ):
+	if(os.path.isfile(DAY_PREFIX+'s'+str(station_ctr)+'d0'+str(day_ctr))==False):
+		fp=open(DAY_PREFIX+'s'+str(station_ctr)+'d0'+str(day_ctr),'a')
+		fp.write(OUT_HEADER)
+	else:
+		fp=open(DAY_PREFIX+'s'+str(station_ctr)+'d0'+str(day_ctr),'a')
+	fp.write("%d,%d,%d,%d,%2d,%3d,%d,%d\n" % (year,month,day,hour,lineID,stationID,statusN,statusS))
+	fp.close()
 
 # Creates file for each station with write-append rules.
 def station_writer(num,year,month,day,hour,lineID,stationID,statusN,statusS, loop_ctr ):
-	if(os.path.isfile(OUT_PREFIX+str(num))==False):
-		fp=open(OUT_PREFIX+str(num),'a')
+	if(os.path.isfile(OUT_PREFIX+str(num)+'.csv')==False):
+		fp=open(OUT_PREFIX+str(num)+'.csv','a')
 		fp.write(OUT_HEADER)
 	else:
-		fp=open(OUT_PREFIX+str(num),'a')
+		fp=open(OUT_PREFIX+str(num)+'.csv','a')
 	fp.write("%d,%d,%d,%d,%2d,%3d,%d,%d\n" % (year,month,day,hour,lineID,stationID,statusN,statusS))
 	fp.close()
 
 
 def station_isolation_engine():
 	# Map CSV cols to labels for manipulation
-	year,month,day,hour,lineID,stationID,statusN,statusS = loadtxt(FN_LINE, usecols =(0,1,2,3,4,5,6,7,), unpack=True, delimiter=",", dtype=int, skiprows = 1)
+	year,month,day,hour,lineID,stationID,statusN,statusS = loadtxt(FN_LINE, usecols =(0,1,2,3,4,5,6,7), unpack=True, delimiter=",", dtype=int, skiprows = 1)
 	ctr = 0
 
 	# Loop through each item of the file
@@ -81,7 +120,7 @@ def line_selection_engine(line_number):
 		ctr = ctr + 1
 
 		# Assign column names to CSV cols
-		year,month,day,hour,lineID,stationID,statusN,statusS = loadtxt(fn, usecols = (0,1,2,3,5,6,7,8,), unpack=True, delimiter=",", dtype=int, skiprows = 1)
+		year,month,day,hour,lineID,stationID,statusN,statusS = loadtxt(fn, usecols = (0,1,2,3,5,6,7,8), unpack=True, delimiter=",", dtype=int, skiprows = 1)
 
 		# Loop through every element in each file and store
 		for i in arange(len(year)):
