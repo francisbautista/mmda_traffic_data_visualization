@@ -56,6 +56,14 @@
 	text-decoration: normal;
 }
 
-button{
-	outline: 0;
+.btn{
+	color: rgba(0, 3, 51, 0.5);
+}
+.btn:hover{
+	
+	color: rgba(0, 3, 51, 0.5);
+}
+
+.btn:focus{
+	outline: none;
 }
