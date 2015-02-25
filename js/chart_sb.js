@@ -3,9 +3,9 @@ var h = 300;
 var r = h/2;
 var color = d3.scale.category20c();
 
-var data = [{"label":"Heavy", "value":20}, 
-		          {"label":"Medium", "value":50}, 
-		          {"label":"Light", "value":30}];
+var data = [{"label":"H", "value":20}, 
+		          {"label":"M", "value":50}, 
+		          {"label":"L", "value":30}];
 
 
 var vis = d3.select('#chart_sb')
@@ -36,12 +36,17 @@ arcs.append("svg:path")
         return arc(d);
     });
 
+
+
 // add the text
 arcs.append("svg:text").attr("transform", function(d){
-			d.innerRadius = 0;
-			d.outerRadius = r;
-    return "translate(" + arc.centroid(d) + ")";}).attr("text-anchor", "middle").text( function(d, i) {
-    return data[i].label;}
+            d.innerRadius = 0;
+            d.outerRadius = r;
+    return "translate(" + arc.centroid(d) + ")";}).attr("text-anchor", "middle").text( function(d, i) 
+    {
+        //return data[i].label+" "+data[i].value+"%";
+        return data[i].value+"%";
+    }
 		);
 
 //Center Text
