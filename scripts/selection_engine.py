@@ -12,12 +12,12 @@ OUT_HEADER = "#year,month,day,hour,lineID,stationID,statusN,statusS\n"
 NAME_LIST = [DIR_PREFIX + s  for s in loadtxt(INPUT_FILE, dtype='a',unpack=False)]
 
 def main():
-	# print "Running LINE SELECTION ENGINE:"
-	# print "------------------------------"
-	# line_number = raw_input('Enter a Line Number: ')
-	# line_selection_engine(int(line_number))
-	# time.sleep(1)
-	# print "\n"
+	print "Running LINE SELECTION ENGINE:"
+	print "------------------------------"
+	line_number = raw_input('Enter a Line Number: ')
+	line_selection_engine(int(line_number))
+	time.sleep(1)
+	print "\n"
 	print "Running STATION SELECTION ENGINE:"
 	print "------------------------------"
 	station_isolation_engine()
