@@ -32,7 +32,7 @@
 .station_name,
 .when,
 .time{
-	display:none;
+	/*display:none;*/
 
 }
 
@@ -41,6 +41,10 @@
 	text-transform: uppercase;
 	color: #aaa;
 	font-size: 80%;
+	background-color: rgba(141, 142, 142, 0.2);
+	transition: background-color 0.5s ease;
+	-moz-transition: background-color 0.5s ease;
+
 }
 
 .when,
@@ -48,10 +52,13 @@
 	text-transform: uppercase;
 	color: #aaa;	
 	font-size: 80%;	
+	background-color: rgba(141, 142, 142, 0.2);
+	transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
 }
 
 .label-default {
-	background-color: rgba(141, 142, 142, 0.2);
+	
 	text-decoration: normal;
 }
 
