@@ -1,11 +1,16 @@
 var w = 300;
 var h = 300;
 var r = h/2;
-var color = d3.scale.category20c();
+//var color = d3.scale.category20c();
+var color = d3.scale.ordinal()
+  .domain(["High", "Medium", "Low"])
+  //.range(["#ad494a", "#d6616b" , "#e7969c"]);
+ // .range(["#263021","#5E7D50","#BECC91"]);
+    .range(["#af1111","#dbd823","#6ba351"]);
 
-var data = [{"label":"H", "value":20}, 
-		          {"label":"M", "value":50}, 
-		          {"label":"L", "value":30}];
+var data = [{"label":"High", "value":20}, 
+		          {"label":"Medium", "value":50}, 
+		          {"label":"Low", "value":30}];
 
 
 var vis = d3.select('#chart_sb')
@@ -53,5 +58,6 @@ arcs.append("svg:text").attr("transform", function(d){
 vis.append("text")
       .attr("dy", ".35em")
       .style("text-anchor", "middle")
+      .style("fill", "rgba(255,255,255,0.85)")
       .attr("class", "inside_sb")
       .text(function(d) { return 'SB'; });

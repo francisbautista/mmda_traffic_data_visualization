@@ -26,6 +26,19 @@
 	margin-bottom: 0.25em;
 	transition: all 0.5s ease;
 	-moz-transition: all 0.5s ease;
+	
+	
+}
+
+.btn-default {
+	border: none;
+	background-color: rgba(255,255,255,0.4);
+}
+
+.btn-default:hover,
+.btn-default:active,
+.btn-default:focus{
+	background-color: rgba(255,255,255,0.9);
 }
 
 .line_name,
@@ -82,9 +95,10 @@
 
 
  body {
- /* background-color: #393939;*/
+  background-color: #393939;
   font-size: 14px;
   font-family: 'Raleway', sans-serif;
+  color: white;
 }
 
 p {
@@ -116,14 +130,31 @@ a {
 }
 
 .slider .handle path {
-  stroke: #393939;
+  stroke: white;
   stroke-width: 3px;
   stroke-linecap: round;
   pointer-events: none;
 }
 
 .slider .handle text {
-  fill: #393939;
+  fill: white;
   text-align: center;
   font-size: 18px;
+}
+
+.panel {
+	background-color: rgba(141, 142, 142, 0.2);
+	border-radius: 0;
+	border: none;
+}
+
+.panel > .panel-heading {
+	background-color: rgba(141, 142, 142, 0.9);
+	border-radius: 0;
+	border: none;
+}
+
+.form-control {
+	background-color: rgba(255, 255, 255, 0.95);
+
 }

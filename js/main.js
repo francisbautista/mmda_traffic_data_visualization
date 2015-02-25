@@ -17,8 +17,9 @@ $('select[name=line_select]').change(function() {
 
     if (this.value !==  '') {
 		$("span.line_name").html(this.value).show();
-		$("span.line_name").css("color", "#222");
-		$("span.line_name").css("background-color", "rgba(141, 142, 142, 0.5)");
+		$("span.line_name").css("color", "#33691E");
+		//$("span.line_name").css("background-color", "rgba(141, 142, 142, 0.5)");
+		$("span.line_name").css("background-color", "rgba(255, 249, 196,0.8)");
 		//$("span.line_name").fadeIn("slow");	
 		$($('select[name=station_select]').removeAttr('disabled')).focus();	
     }
@@ -35,8 +36,8 @@ $('select[name=line_select]').change(function() {
 $('select[name=station_select]').change(function() {
     if (this.value != '') {
 		$("span.station_name").html(this.value).show;
-		$("span.station_name").css("color", "#222");
-		$("span.station_name").css("background-color", "rgba(141, 142, 142, 0.5)");
+		$("span.station_name").css("color", "#33691E");
+		$("span.station_name").css("background-color", "rgba(255, 249, 196,0.8)");
 		//$("span.line_name").fadeIn("slow");		
     }
     else {
@@ -49,6 +50,6 @@ $('select[name=station_select]').change(function() {
 $('button').click(function() {
 	var val = $(this).data('label');
 	$("span.when").html(val).show();
-	$("span.when").css("color", "#222");
-	$("span.when").css("background-color", "rgba(141, 142, 142, 0.5)");
+	$("span.when").css("color", "#33691E");
+	$("span.when").css("background-color", "rgba(255, 249, 196,0.8)");
 });
