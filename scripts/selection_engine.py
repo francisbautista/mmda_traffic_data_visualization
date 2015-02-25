@@ -24,6 +24,13 @@ def main():
 	time.sleep(1)
 	sys.exit(1)
 
+def day_isolation_engine():
+	# Get file names
+	# Loop through files
+	# Isolate day using python date_time library
+	# Select for all dates and store in requisite day file
+
+
 # Creates file for each station with write-append rules.
 def station_writer(num,year,month,day,hour,lineID,stationID,statusN,statusS, loop_ctr ):
 	if(os.path.isfile(OUT_PREFIX+str(num))==False):
