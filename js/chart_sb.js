@@ -18,7 +18,11 @@ var vis = d3.select('#chart_sb')
 var pie = d3.layout.pie().value(function(d){return d.value;});
 
 // declare an arc generator function
-var arc = d3.svg.arc().outerRadius(r);
+//var arc = d3.svg.arc().outerRadius(r);
+
+var arc = d3.svg.arc()
+    .innerRadius(r/2)
+    .outerRadius(r);
 
 // select paths, use arc generator to draw
 var arcs = vis.selectAll("g.slice").data(pie).enter().append("svg:g").attr("class", "slice");
@@ -39,3 +43,10 @@ arcs.append("svg:text").attr("transform", function(d){
     return "translate(" + arc.centroid(d) + ")";}).attr("text-anchor", "middle").text( function(d, i) {
     return data[i].label;}
 		);
+
+//Center Text
+vis.append("text")
+      .attr("dy", ".35em")
+      .style("text-anchor", "middle")
+      .attr("class", "inside_sb")
+      .text(function(d) { return 'SB'; });

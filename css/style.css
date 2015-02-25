@@ -8,3 +8,13 @@
 	margin-bottom: 2em;
 	margin-top: 2em;
 }
+
+.inside_nb{
+	font-size: 5em;
+	color: rgba(49, 130, 189, 0.8);
+}
+
+.inside_sb{
+	font-size: 5em;
+	color: rgba(51, 188, 49, 0.8);
+}
