@@ -26,10 +26,10 @@ def main():
 	# station_isolation_engine()
 	# time.sleep(1)
 	# print "\n"
-	# print "Running day_isolation_engine:"
-	# print "------------------------------"
-	# day_isolation_engine()
-	# time.sleep(1)
+	print "Running day_isolation_engine:"
+	print "------------------------------"
+	day_isolation_engine()
+	time.sleep(1)
 	print "\n"
 	print "Running day_summary_engine:"
 	print "------------------------------"
@@ -69,7 +69,7 @@ def day_sum_writer(lineID,stationID,day,hour,nHigh,nMed,nLow,sHigh,sMed,sLow):
 		fp.write(FINAL_HEADER)
 	else:
 		fp=open(SD_PREFIX+'s'+str(station_ctr)+'d0'+str(day_ctr)+'.csv','a')
-	fp.write("%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n" % (lineID,stationID,day,hour,nHigh,nMed,nLow,sHigh,sMed,sLow))
+	fp.write("%d,%d,%d,%d, %d,%d,%d, %d,%d,%d\n" % (lineID,stationID,day,hour,nHigh,nMed,nLow,sHigh,sMed,sLow))
 	fp.close()
 
 
