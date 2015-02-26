@@ -26,23 +26,51 @@ def main():
 	# station_isolation_engine()
 	# time.sleep(1)
 	# print "\n"
-	print "Running day_isolation_engine:"
+	# print "Running day_isolation_engine:"
+	# print "------------------------------"
+	# day_isolation_engine()
+	# time.sleep(1)
+	print "\n"
+	print "Running day_summary_engine:"
 	print "------------------------------"
-	day_isolation_engine()
+	day_summary_engine()
 	time.sleep(1)
 	sys.exit(1)
 
-def day_summary():
+def day_summary_engine():
 	#lineID,stationID,day,hour,nHigh,nMed,nLow,sHigh,sMed,sLow\n
 	DIR = '../output/stations'
 	station_count = len([name for name in os.listdir(DIR) if os.path.isfile(os.path.join(DIR, name))])
 
-	for station in arange(station_day_count):
+	for station in arange(station_count):
 		for day in arange(7):
 			fn = DAY_PREFIX+'s'+str(station)+'d0'+ str(day)+".csv"
 			year,month,day_stuff,hour,lineID,stationID,statusN,statusS=loadtxt(fn, usecols =(0,1,2,3,4,5,6,7), unpack=True, delimiter=",", dtype=int, skiprows = 1)
-			# for time in arange(24):
-			# 	nHigh = sum.statusN[(time==hour[i])&(statusN[])]
+			for time in arange(24):
+				nData = statusN[hour==time]
+				nTot = len(nData[nData>-1])
+				nHigh = round(len(nData[nData==2])/float(nTot)*100)
+				nMed = round(len(nData[nData==1])/float(nTot)*100)
+				nLow = round(len(nData[nData==0])/float(nTot)*100)
+
+				sData = statusS[hour==time]
+				sTot = len(sData[sData>-1])
+				sHigh = round(len(sData[sData==2])/float(sTot)*100)
+				sMed = round(len(sData[sData==1])/float(sTot)*100)
+				sLow = round(len(sData[sData==0])/float(sTot)*100)
+
+				day_sum_writer(lineID[0], stationID[0], day, time, nHigh,nMed,nLow,sHigh,sMed,sLow )
+
+def day_sum_writer(lineID,stationID,day,hour,nHigh,nMed,nLow,sHigh,sMed,sLow):
+	station_ctr = stationID
+	day_ctr = day
+	if(os.path.isfile(SD_PREFIX+'s'+str(station_ctr)+'d0'+str(day_ctr)+'.csv')==False):
+		fp=open(SD_PREFIX+'s'+str(station_ctr)+'d0'+str(day_ctr)+'.csv','a')
+		fp.write(FINAL_HEADER)
+	else:
+		fp=open(SD_PREFIX+'s'+str(station_ctr)+'d0'+str(day_ctr)+'.csv','a')
+	fp.write("%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n" % (lineID,stationID,day,hour,nHigh,nMed,nLow,sHigh,sMed,sLow))
+	fp.close()
 
 
 def day_isolation_engine():
