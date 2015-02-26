@@ -1,3 +1,8 @@
+# Authors: Francis Bautista and Eyana Mallari
+# Created At: 2015
+# Data Visualization Final Project
+# Traffic Forecasting Visualization
+
 import sys, collections, os, os.path, time, datetime
 from numpy import *
 
@@ -37,8 +42,9 @@ def main():
 	time.sleep(1)
 	sys.exit(1)
 
+# Day Summary Engine works to read the per station day data and summarizes
+# and collates HML data into percentage values
 def day_summary_engine():
-	#lineID,stationID,day,hour,nHigh,nMed,nLow,sHigh,sMed,sLow\n
 	DIR = '../output/stations'
 	station_count = len([name for name in os.listdir(DIR) if os.path.isfile(os.path.join(DIR, name))])
 
@@ -46,6 +52,7 @@ def day_summary_engine():
 		for day in arange(7):
 			fn = DAY_PREFIX+'s'+str(station)+'d0'+ str(day)+".csv"
 			year,month,day_stuff,hour,lineID,stationID,statusN,statusS=loadtxt(fn, usecols =(0,1,2,3,4,5,6,7), unpack=True, delimiter=",", dtype=int, skiprows = 1)
+			# Loop through time and derive percentage value for HML
 			for time in arange(24):
 				nData = statusN[hour==time]
 				nTot = len(nData[nData>-1])
@@ -61,18 +68,7 @@ def day_summary_engine():
 
 				day_sum_writer(lineID[0], stationID[0], day, time, nHigh,nMed,nLow,sHigh,sMed,sLow )
 
-def day_sum_writer(lineID,stationID,day,hour,nHigh,nMed,nLow,sHigh,sMed,sLow):
-	station_ctr = stationID
-	day_ctr = day
-	if(os.path.isfile(SD_PREFIX+'s'+str(station_ctr)+'d0'+str(day_ctr)+'.csv')==False):
-		fp=open(SD_PREFIX+'s'+str(station_ctr)+'d0'+str(day_ctr)+'.csv','a')
-		fp.write(FINAL_HEADER)
-	else:
-		fp=open(SD_PREFIX+'s'+str(station_ctr)+'d0'+str(day_ctr)+'.csv','a')
-	fp.write("%d,%d,%d,%d, %d,%d,%d, %d,%d,%d\n" % (lineID,stationID,day,hour,nHigh,nMed,nLow,sHigh,sMed,sLow))
-	fp.close()
-
-
+# Maps per station day CSV data
 def day_isolation_engine():
 	DIR = '../output/stations'
 	station_count = len([name for name in os.listdir(DIR) if os.path.isfile(os.path.join(DIR, name))])
@@ -102,26 +98,6 @@ def day_isolation_engine():
 					progress += " "
 			sys.stdout.write("[ %s ] %.2f%%" % (progress, percentage))
 			sys.stdout.flush()
-
-
-def day_writer(year,month,day,hour,lineID,stationID,statusN,statusS, station_ctr,day_ctr  ):
-	if(os.path.isfile(DAY_PREFIX+'s'+str(station_ctr)+'d0'+str(day_ctr)+'.csv')==False):
-		fp=open(DAY_PREFIX+'s'+str(station_ctr)+'d0'+str(day_ctr)+'.csv','a')
-		fp.write(OUT_HEADER)
-	else:
-		fp=open(DAY_PREFIX+'s'+str(station_ctr)+'d0'+str(day_ctr)+'.csv','a')
-	fp.write("%d,%d,%d,%d,%2d,%3d,%d,%d\n" % (year,month,day,hour,lineID,stationID,statusN,statusS))
-	fp.close()
-
-# Creates file for each station with write-append rules.
-def station_writer(num,year,month,day,hour,lineID,stationID,statusN,statusS, loop_ctr ):
-	if(os.path.isfile(OUT_PREFIX+str(num)+'.csv')==False):
-		fp=open(OUT_PREFIX+str(num)+'.csv','a')
-		fp.write(OUT_HEADER)
-	else:
-		fp=open(OUT_PREFIX+str(num)+'.csv','a')
-	fp.write("%d,%d,%d,%d,%2d,%3d,%d,%d\n" % (year,month,day,hour,lineID,stationID,statusN,statusS))
-	fp.close()
 
 
 def station_isolation_engine():
@@ -182,7 +158,37 @@ def line_selection_engine(line_number):
 	fp.close()
 	print "Written to %s." % fn_out
 
+# Day Summary Writer
+def day_sum_writer(lineID,stationID,day,hour,nHigh,nMed,nLow,sHigh,sMed,sLow):
+	station_ctr = stationID
+	day_ctr = day
+	if(os.path.isfile(SD_PREFIX+'s'+str(station_ctr)+'d0'+str(day_ctr)+'.csv')==False):
+		fp=open(SD_PREFIX+'s'+str(station_ctr)+'d0'+str(day_ctr)+'.csv','a')
+		fp.write(FINAL_HEADER)
+	else:
+		fp=open(SD_PREFIX+'s'+str(station_ctr)+'d0'+str(day_ctr)+'.csv','a')
+	fp.write("%d,%d,%d,%d, %d,%d,%d, %d,%d,%d\n" % (lineID,stationID,day,hour,nHigh,nMed,nLow,sHigh,sMed,sLow))
+	fp.close()
 
+# Creates file for each station with write-append rules.
+def station_writer(num,year,month,day,hour,lineID,stationID,statusN,statusS, loop_ctr ):
+	if(os.path.isfile(OUT_PREFIX+str(num)+'.csv')==False):
+		fp=open(OUT_PREFIX+str(num)+'.csv','a')
+		fp.write(OUT_HEADER)
+	else:
+		fp=open(OUT_PREFIX+str(num)+'.csv','a')
+	fp.write("%d,%d,%d,%d,%2d,%3d,%d,%d\n" % (year,month,day,hour,lineID,stationID,statusN,statusS))
+	fp.close()
+
+# Creates a file for each day and station
+def day_writer(year,month,day,hour,lineID,stationID,statusN,statusS, station_ctr,day_ctr  ):
+	if(os.path.isfile(DAY_PREFIX+'s'+str(station_ctr)+'d0'+str(day_ctr)+'.csv')==False):
+		fp=open(DAY_PREFIX+'s'+str(station_ctr)+'d0'+str(day_ctr)+'.csv','a')
+		fp.write(OUT_HEADER)
+	else:
+		fp=open(DAY_PREFIX+'s'+str(station_ctr)+'d0'+str(day_ctr)+'.csv','a')
+	fp.write("%d,%d,%d,%d,%2d,%3d,%d,%d\n" % (year,month,day,hour,lineID,stationID,statusN,statusS))
+	fp.close()
 
 
 if __name__ == '__main__':
