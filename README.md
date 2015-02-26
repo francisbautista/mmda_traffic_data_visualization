@@ -4,4 +4,4 @@
 
 ![System Screenshot](/fig/screenshot.png)
 
-This project works to use historical high-medium-low data collated by the MMDA and Dr. Reina Reyes to give a statistical representation of the traffic volume for a specific station for a given line at a certain time. It will use a pie-chart to represent the statistical breakdown of the chances for the traffic volumes.
+This project works to use historical high-medium-low data collated by the MMDA and Dr. Reina Reyes to give a statistical representation of the traffic volume for a specific station for a given line at a certain time. It will use a donut-chart with day and time selectors to represent the statistical breakdown of the chances for the traffic volumes.
