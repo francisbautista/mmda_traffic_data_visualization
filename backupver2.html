@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Data Visualization</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/d3.slider.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <div class="container">
+      <br>
+      <div class="col-lg-12">
+      <h4>Based on past traffic data, what are the chances of heavy traffic at a given day and time? <small>Default: C5 Katip Current Timestamp</small></h4>
+      </div>
+      <div class="col-lg-3 selectors">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Where</h3>
+          </div>
+          <div class="panel-body">
+            <select name="line_select" id="line_select" class="form-control" autofocus>
+              <option value="">Select Line</option>
+              <option value="active">active</option>
+              <option value="stockroom">stockroom</option>
+              <option value="service unit">service unit</option>
+              <option value="for disposal">for disposal</option>
+              <option value="disposed">disposed</option>
+              <option value="repair">repair</option>            
+            </select>          
+            <br> 
+            <select name="station_select" id="station_select" class="form-control">
+              <option value="">Select Station</option>
+              <option value="active">active</option>
+              <option value="stockroom">stockroom</option>
+              <option value="service unit">service unit</option>
+              <option value="for disposal">for disposal</option>
+              <option value="disposed">disposed</option>
+              <option value="repair">repair</option>            
+            </select>
+          </div>
+        </div>            
+        
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">When</h3>
+          </div>
+          <div class="panel-body">
+            <select name="day_select" id="day_select" class="form-control">
+              <option value="">Select Day of the Week</option>
+              <option value="active">Mondays</option>
+              <option value="stockroom">Tuesdays</option>
+              <option value="service unit">Wednesdays</option>
+              <option value="for disposal">Thursdays</option>
+              <option value="disposed">Fridays</option>
+              <option value="repair">Saturdays</option>  
+              <option value="disposed">Sundays</option>
+            
+            </select> 
+            <h5>Quick Select:</h5> 
+            <center>
+              <button type="button" class="btn btn-small btn-info">In 30 minutes</button>
+              <button type="button" class="btn btn-small btn-warning">In an hour</button> <br>
+              <button type="button" class="btn btn-small btn-success" style="margin-top: 0.5em">Tomorrow</button>
+            </center>
+          </div>
+        </div>                 
+      </div>
+
+      <div class="col-lg-9">
+        <div class="col-lg-6">
+          <br>
+          <div id="chart"></div>          
+        </div>
+        <div class="col-lg-6">
+          <br>
+          <div id="chart_sb"></div>             
+        </div>
+      </div>
+
+      <div class="col-lg-12 time-slider">
+        <div id="slider7"></div>    
+      </div>
+    </div><!--container-->
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!--<script src="js/d3.js" charset="utf-8"></script>-->
+    <!--<script src="http://d3js.org/d3.v3.min.js"></script>-->
+     <script src="js/d3.min.js" charset="utf-8"></script>
+    <script src="js/d3.slider.js" charset="utf-8"></script>
+    <script src="js/chart.js" charset="utf-8"></script>
+    <script src="js/chart_sb.js" charset="utf-8"></script>
+    <script src="js/main.js" charset="utf-8"></script>
+  </body>
+</html>

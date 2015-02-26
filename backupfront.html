@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Data Visualization</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/d3.slider.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <div class="container">
+      <br>
+      <div class="col-lg-12">
+      <h4>Chances of heavy traffic at a given day and time</h4>
+      </div>
+      <div class="col-lg-12 selectors">
+        <div class="col-lg-4">
+          <select name="line_select" id="line_select" class="form-control pull-right" style="width: 70%">
+            <option value="">Select Line</option>
+            <option value="active">active</option>
+            <option value="stockroom">stockroom</option>
+            <option value="service unit">service unit</option>
+            <option value="for disposal">for disposal</option>
+            <option value="disposed">disposed</option>
+            <option value="repair">repair</option>            
+          </select>          
+        </div>
+
+        <div class="col-lg-4">
+          <center>
+          <select name="station_select" id="station_select" class="form-control" style="width: 70%">
+            <option value="">Select Station</option>
+            <option value="active">active</option>
+            <option value="stockroom">stockroom</option>
+            <option value="service unit">service unit</option>
+            <option value="for disposal">for disposal</option>
+            <option value="disposed">disposed</option>
+            <option value="repair">repair</option>            
+          </select> 
+          </center>        
+        </div>
+
+        <div class="col-lg-4">
+          <select name="day_select" id="day_select" class="form-control pull-left" style="width: 70%">
+            <option value="">Select Day</option>
+            <option value="active">active</option>
+            <option value="stockroom">stockroom</option>
+            <option value="service unit">service unit</option>
+            <option value="for disposal">for disposal</option>
+            <option value="disposed">disposed</option>
+            <option value="repair">repair</option>            
+          </select>          
+        </div>
+      </div>
+
+      <div class="col-lg-12">
+        <div class="col-lg-6">
+           <h2>North Bound</h2>
+          <div id="chart"></div>          
+        </div>
+        <div class="col-lg-6">
+          <h2>South Bound</h2>
+          <div id="chart_sb"></div>             
+        </div>
+      </div>
+
+      <div class="col-lg-12 time-slider">
+        <div id="slider7"></div>    
+      </div>
+    </div><!--container-->
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!--<script src="js/d3.js" charset="utf-8"></script>-->
+    <!--<script src="http://d3js.org/d3.v3.min.js"></script>-->
+     <script src="js/d3.min.js" charset="utf-8"></script>
+    <script src="js/d3.slider.js" charset="utf-8"></script>
+    <script src="js/chart.js" charset="utf-8"></script>
+    <script src="js/chart_sb.js" charset="utf-8"></script>
+    <script src="js/main.js" charset="utf-8"></script>
+  </body>
+</html>
