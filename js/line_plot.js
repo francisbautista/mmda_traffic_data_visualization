@@ -1,5 +1,5 @@
 // InitChart();
-d3.csv("/datavis/data/04_data/s11d04.csv", function(error, data) {
+d3.csv("/datavis/data/04_data/s5d04.csv", function(error, data) {
     //   data.forEach(function(d) {
     //       d.Hour = parseInt(d.Hour);
     //       d.nHigh = +d.nHigh; });
@@ -12,7 +12,7 @@ function InitChart(data) {
     MARGINS = {
         top: 20,
         right: 20,
-        bottom: 30,
+        bottom: 16,
         left: 30
     },
     xRange = d3.scale.linear()
@@ -97,18 +97,18 @@ function InitChart(data) {
     vis.append("svg:path")
     .datum(data)
     .attr("d", line(data))
-    .attr("stroke", "red")
+    .attr("stroke", "#af1111")
     .attr("stroke-width", 4)
     .attr("fill", "none");
 
     vis.append("svg:path")
     .attr("d", line2(data))
-    .attr("stroke", "yellow")
+    .attr("stroke", "#dbd823")
     .attr("stroke-width", 4)
     .attr("fill", "none");
     vis.append("svg:path")
     .attr("d", line3(data))
-    .attr("stroke", "green")
+    .attr("stroke", "#6fb640")
     .attr("stroke-width", 4)
     .attr("fill", "none");
 
