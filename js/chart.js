@@ -5,9 +5,7 @@ var r = h/2;
 
 var color = d3.scale.ordinal()
   .domain(["High", "Medium", "Low"])
-  //.range(["#ad494a", "#d6616b" , "#e7969c"]);
- // .range(["#263021","#5E7D50","#BECC91"]);
-    .range(["#af1111","#dbd823","#6ba351"]);
+  .range(["#af1111","#dbd823","#6ba351"]);
 
 console.log(color);
 

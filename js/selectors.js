@@ -10,16 +10,10 @@ function getStations(data) {
 	console.log(line);
 	var result_obj = $.grep(data, function(e){ return e.lineID == line; });
 	var result_json = [];
-	for (var i in result_obj){
-		x = JSON.stringify(result_obj[i])
-		result_json.push(x);
-	}
-	
-//console.log(result_json);
-	// var result = result_obj.map(function(a) {return a.stationName;});
-	// return result;
-	//return result_obj;
-	//optionWriter(result_json);
+		for (var i in result_obj){
+			x = JSON.stringify(result_obj[i])
+			result_json.push(x);
+		}
 	optionWriter(result_obj);
 
 }
