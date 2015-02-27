@@ -18,16 +18,21 @@ var arc = d3.svg.arc()
 function init(hour){
 
 
-  var file = "../data_vis/output/station_day_summary/s0d00_nospace.csv";
+  // var file = "../data_vis/output/station_day_summary/s0d00_nospace.csv";
 
-   d3.csv(file, 
-    function(data) {
-      var filtered =  data.filter(function(d) {return d["hour"]==hour });
-      var dataset = filtered.map(function(d) { 
-         return [ +d["nHigh"], +d["nMed"], + d["nLow"] ];     
-      });
-      piePlotter(dataset[0]);
-  });
+  //  d3.csv(file, 
+  //   function(data) {
+  //     var filtered =  data.filter(function(d) {return d["hour"]==hour });
+  //     var dataset = filtered.map(function(d) { 
+  //        return [ +d["nHigh"], +d["nMed"], + d["nLow"] ];     
+  //     });
+
+
+  //     piePlotter(dataset[0]);
+  // });
+
+  var dataset = [0,0,100];
+  piePlotter(dataset);
  
 }
 
