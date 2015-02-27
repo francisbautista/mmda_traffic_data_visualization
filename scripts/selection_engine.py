@@ -20,17 +20,17 @@ FINAL_HEADER = "lineID,stationID,day,hour,nHigh,nMed,nLow,sHigh,sMed,sLow\n"
 NAME_LIST = [DIR_PREFIX + s  for s in loadtxt(INPUT_FILE, dtype='a',unpack=False)]
 
 def main():
-	# print "Running LINE SELECTION ENGINE:"
-	# print "------------------------------"
-	# line_number = raw_input('Enter a Line Number: ')
-	# line_selection_engine(int(line_number))
-	# time.sleep(1)
-	# print "\n"
-	# print "Running STATION SELECTION ENGINE:"
-	# print "------------------------------"
-	# station_isolation_engine()
-	# time.sleep(1)
-	# print "\n"
+	print "Running LINE SELECTION ENGINE:"
+	print "------------------------------"
+	line_number = raw_input('Enter a Line Number: ')
+	line_selection_engine(int(line_number))
+	time.sleep(1)
+	print "\n"
+	print "Running STATION SELECTION ENGINE:"
+	print "------------------------------"
+	station_isolation_engine()
+	time.sleep(1)
+	print "\n"
 	print "Running day_isolation_engine:"
 	print "------------------------------"
 	day_isolation_engine()
@@ -167,7 +167,7 @@ def day_sum_writer(lineID,stationID,day,hour,nHigh,nMed,nLow,sHigh,sMed,sLow):
 		fp.write(FINAL_HEADER)
 	else:
 		fp=open(SD_PREFIX+'s'+str(station_ctr)+'d0'+str(day_ctr)+'.csv','a')
-	fp.write("%d,%d,%d,%d, %d,%d,%d, %d,%d,%d\n" % (lineID,stationID,day,hour,nHigh,nMed,nLow,sHigh,sMed,sLow))
+	fp.write("%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n" % (lineID,stationID,day,hour,nHigh,nMed,nLow,sHigh,sMed,sLow))
 	fp.close()
 
 # Creates file for each station with write-append rules.
