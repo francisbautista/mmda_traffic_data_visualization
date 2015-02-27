@@ -11,13 +11,13 @@ var color = d3.scale.ordinal()
 
 function pieSketch(hour){
 
-d3.csv("../data_vis/output/station_day_summary/s0d01_nospace.csv", 
+d3.csv("../data_vis/output/station_day_summary/s0d01_nospace.csv",
   function(data) {
     var filtered =  data.filter(function(d) {return d["hour"]==hour });
-    var dataset = filtered.map(function(d) { 
-       return [ +d["nHigh"], +d["nMed"], + d["nLow"] ];     
+    var dataset = filtered.map(function(d) {
+       return [ +d["nHigh"], +d["nMed"], + d["nLow"] ];
     });
-
+    piePlotter(dataset[0]);
 });
 
 }
@@ -25,8 +25,8 @@ d3.csv("../data_vis/output/station_day_summary/s0d01_nospace.csv",
 
 function piePlotter(dataset){
 
-  var data = [{"label":"High", "value": dataset[0]}, 
-              {"label":"Medium", "value":dataset[1]}, 
+  var data = [{"label":"High", "value": dataset[0]},
+              {"label":"Medium", "value":dataset[1]},
               {"label":"Low", "value":dataset[2]}];
 
   var vis = d3.select('#chart')
@@ -70,7 +70,7 @@ function piePlotter(dataset){
         .style("fill", "rgba(255,255,255,0.85)")
         .attr("class", "inside_nb")
         .text(function(d) { return 'NB'; });
-  
+
 }
 
 
@@ -78,6 +78,3 @@ function piePlotter(dataset){
 
 
 pieSketch(hour);
-
-
-
