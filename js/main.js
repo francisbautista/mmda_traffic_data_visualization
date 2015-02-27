@@ -1,4 +1,29 @@
 
+// $(function(){
+// 	$("#visualisationNB").hide();
+// 	$(".onoffswitch").on("click", function(){
+// 		$("#visualisationSB, #visualisationNB").toggle();
+// 	});
+// });
+
+$('#myonoffswitch').change(function(){
+	 if (this.checked){
+		$('#visualisationSB').show();
+		$('#visualisationNB').hide();
+	}
+	else {
+		$('#visualisationNB').show();
+		$('#visualisationSB').hide();;
+	}
+
+});
+
+
+// $(".onoffswitch").click(function(){
+// 	$("#visualisationSB").show();
+// 	$("#visualisationNB").hide();
+// });
+
 
 console.log(d3.time.hour);
 var start = moment().startOf('day').fromNow();
@@ -20,16 +45,16 @@ $('select[name=line_select]').change(function() {
 		$("span.line_name").css("color", "#33691E");
 		//$("span.line_name").css("background-color", "rgba(141, 142, 142, 0.5)");
 		$("span.line_name").css("background-color", "rgba(255, 249, 196,0.8)");
-		//$("span.line_name").fadeIn("slow");	
-		$($('select[name=station_select]').removeAttr('disabled')).focus();	
+		//$("span.line_name").fadeIn("slow");
+		$($('select[name=station_select]').removeAttr('disabled')).focus();
     }
     else {
         $("span.line_name").hide();
         $('select[name=station_select]').attr('disabled', 'disabled');
     }
 
-        
-	
+
+
 
 });
 
@@ -39,7 +64,7 @@ $('select[name=station_select]').change(function() {
 		$("span.station_name").html(val).show;
 		$("span.station_name").css("color", "#33691E");
 		$("span.station_name").css("background-color", "rgba(255, 249, 196,0.8)");
-		//$("span.line_name").fadeIn("slow");		
+		//$("span.line_name").fadeIn("slow");
     }
     else {
         $("span.station_name").hide();
@@ -57,9 +82,9 @@ $('button').click(function() {
 
 
 $('form').submit(function(e){
-	e.preventDefault(); 
-	
-	var reg = $( 'select[name="reg_id"]').val();	
+	e.preventDefault();
+
+	var reg = $( 'select[name="reg_id"]').val();
 	var pro = $( 'select[name="pro_id"]').val();
 	var mun = $( 'select[name="mun_id"]').val();
 	var are = $( 'select[name="are_id"]').val();
@@ -69,8 +94,8 @@ $('form').submit(function(e){
 
 	if (are != ""){
 		ajax_call(are, start_date, end_date, "are");
-	
-	} 
+
+	}
 	else if (mun != "") {
 		ajax_call(mun, start_date, end_date, "mun");
 	}
