@@ -1,5 +1,11 @@
-
-
+/*
+Authors: Francis Bautista and Eyana Mallari
+Description: Data visualization of historical traffic data to give percentage predictions of traffic volumes.
+Created At: February 28, 2015
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*/
 
 $('#myonoffswitch').change(function(){
 	 if (this.checked){
