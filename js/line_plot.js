@@ -15,7 +15,7 @@ function InitChart(data) {
       bottom: 20,
       left: 30
     },
-    xRange = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([0,24]),
+    xRange = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([0,23]),
 
     yRange = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([0,100]),
 
@@ -42,7 +42,7 @@ function InitChart(data) {
     .attr("class", "y axis")
     .attr("transform", "translate(" + (MARGINS.left) + ",0)")
     .call(yAxis);
-
+    
     var line = d3.svg.line()
     .x(function (d) {
       return xRange(d.hour);
