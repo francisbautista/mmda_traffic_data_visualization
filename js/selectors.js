@@ -1,4 +1,6 @@
-var line = 0;
+
+
+
 
 $('select[name=line_select]').change(function() {
 	line = this.value;
@@ -10,16 +12,10 @@ function getStations(data) {
 	console.log(line);
 	var result_obj = $.grep(data, function(e){ return e.lineID == line; });
 	var result_json = [];
-	for (var i in result_obj){
-		x = JSON.stringify(result_obj[i])
-		result_json.push(x);
-	}
-	
-//console.log(result_json);
-	// var result = result_obj.map(function(a) {return a.stationName;});
-	// return result;
-	//return result_obj;
-	//optionWriter(result_json);
+		for (var i in result_obj){
+			x = JSON.stringify(result_obj[i])
+			result_json.push(x);
+		}
 	optionWriter(result_obj);
 
 }
@@ -61,5 +57,5 @@ function parseData(url, callBack) {
 
 
 
-// sed -e 's/,\s\+/,/g' local.csv > localNoSpaces.csv
+// sed -e 's/,\s\+/,/g' s0d01.csv > s0d01_nospace.csv
 

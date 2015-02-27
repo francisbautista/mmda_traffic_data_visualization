@@ -17,7 +17,7 @@
       <br>
       <div class="col-lg-12">
       <h2><span style="color: #6BA351">Traffic Forecasting </span><span style="color:#DBD823">Visualization</span></h2>
-      <h4>Based on past traffic data, what are the chances of heavy traffic in <span class="line_name label label-default">Select Line</span> <span class="station_name label label-default">Select Station</span> <span class="when label label-default">Select When</span> <span class="time label label-default">Select Time</span>?</h4>
+      <h4>Based on past traffic data, what are the chances of heavy traffic in <span class="line_name label label-default">Select Line</span> <span class="station_name label label-default">Select Station</span> <span class="when label label-default">Select When</span>?</h4>
       </div>
       <div class="col-lg-3 selectors">
         <div class="panel panel-default">
@@ -50,16 +50,16 @@
           </div>
           <div class="panel-body">
             <center>
-              <button type="button" class="btn btn-round btn-default" data-label="On Mondays">Mo</button>
-              <button type="button" class="btn btn-round btn-default" data-label="On Tuesdays">Tu</button>
-              <button type="button" class="btn btn-round btn-default" data-label="On Wednesdays">We</button>
-              <button type="button" class="btn btn-round btn-default" data-label="On Thursdays">Th</button>
-              <button type="button" class="btn btn-round btn-default" data-label="On Fridays">Fr</button>
-              <button type="button" class="btn btn-round btn-default" data-label="On Saturdays">Sa</button>
-              <button type="button" class="btn btn-round btn-default" data-label="On Sundays">Su</button>
-              <button type="button" class="btn btn-round btn-default" data-label="In 30 minutes"><small>30m</small></button>
-              <button type="button" class="btn btn-round btn-default" data-label="In 1 hour"><small>1hr</small></button>
-              <button type="button" class="btn btn-round btn-default" data-label="Tomorrow"><small>Tom</small></button>
+              <button type="button" class="btn btn-round btn-default" data-int="0" data-label="On Mondays">Mo</button>
+              <button type="button" class="btn btn-round btn-default" data-int="1" data-label="On Tuesdays">Tu</button>
+              <button type="button" class="btn btn-round btn-default" data-int="2" data-label="On Wednesdays">We</button>
+              <button type="button" class="btn btn-round btn-default" data-int="3" data-label="On Thursdays">Th</button>
+              <button type="button" class="btn btn-round btn-default" data-int="4" data-label="On Fridays">Fr</button>
+              <button type="button" class="btn btn-round btn-default" data-int="5" data-label="On Saturdays">Sa</button>
+              <button type="button" class="btn btn-round btn-default" data-int="6" data-label="On Sundays">Su</button>
+              <button type="button" class="btn btn-round btn-default" data-int="7" data-label="In 30 minutes"><small>30m</small></button>
+              <button type="button" class="btn btn-round btn-default"  data-int="8" data-label="In 1 hour"><small>1hr</small></button>
+              <button type="button" class="btn btn-round btn-default" data-int="9" data-label="Tomorrow"><small>Tom</small></button>
             </center>
           </div>
         </div>
@@ -108,14 +108,16 @@
     <script src="js/d3.min.js" charset="utf-8"></script>
     <script src="js/d3.slider.js" charset="utf-8"></script>
     <script src="js/moment.js" charset="utf-8"></script>
-    <script src="js/chart.js" charset="utf-8"></script>
-    <script src="js/chart_sb.js" charset="utf-8"></script>
+    <script src="js/selectors.js" charset="utf-8"></script>
     <script src="js/papaparse.js"></script>
     <script src="js/slider.js" charset="utf-8"></script>
-    <script src="js/selectors.js" charset="utf-8"></script>
+
     <script src="js/main.js" charset="utf-8"></script>
-    <script src="js/line_plot.js" charset="utf-8"></script>
-    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+    <script src="js/chart.js" charset="utf-8"></script>
+    <script src="js/chart_sb.js" charset="utf-8"></script>
+     <script src="js/global.js" charset="utf-8"></script>
+    <script type="text/javascript">
+
     </script>
   </body>
 </html>
