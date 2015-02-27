@@ -26,8 +26,8 @@
 	margin-bottom: 0.25em;
 	transition: all 0.5s ease;
 	-moz-transition: all 0.5s ease;
-	
-	
+
+
 }
 
 .btn-default {
@@ -63,15 +63,15 @@
 .when,
 .time{
 	text-transform: uppercase;
-	color: #aaa;	
-	font-size: 80%;	
+	color: #aaa;
+	font-size: 80%;
 	background-color: rgba(141, 142, 142, 0.2);
 	transition: all 0.5s ease;
 	-moz-transition: all 0.5s ease;
 }
 
 .label-default {
-	
+
 	text-decoration: normal;
 }
 
@@ -79,7 +79,7 @@
 	color: rgba(0, 3, 51, 0.5);
 }
 .btn:hover{
-	
+
 	color: rgba(0, 3, 51, 0.5);
 }
 
@@ -157,4 +157,25 @@ a {
 .form-control {
 	background-color: rgba(255, 255, 255, 0.95);
 
+}
+
+.axis path, .axis line
+{
+	fill: none;
+	stroke: #777;
+	shape-rendering: crispEdges;
+}
+
+.axis text
+{
+	font-family: 'Arial';
+	font-size: 13px;
+}
+.tick
+{
+	stroke-dasharray: 1, 2;
+}
+.bar
+{
+	fill: FireBrick;
 }
