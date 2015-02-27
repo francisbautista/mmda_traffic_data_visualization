@@ -55,5 +55,5 @@ function parseData(url, callBack) {
 
 
 
-// sed -e 's/,\s\+/,/g' local.csv > localNoSpaces.csv
+// sed -e 's/,\s\+/,/g' s0d01.csv > s0d01_nospace.csv
 

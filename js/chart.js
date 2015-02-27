@@ -7,53 +7,67 @@ var color = d3.scale.ordinal()
   .domain(["High", "Medium", "Low"])
   .range(["#af1111","#dbd823","#6ba351"]);
 
-console.log(color);
 
-var data = [{"label":"High", "value":20}, 
-		          {"label":"Medium", "value":50}, 
-		          {"label":"Low", "value":30}];
+d3.csv("../data_vis/output/station_day_summary/s0d01_nospace.csv", 
+  function(data) {
+    var filtered =  data.filter(function(d) {return d["hour"]==7 });
+    var dataset = filtered.map(function(d) { 
+       return [ +d["nHigh"], +d["nMed"], + d["nLow"] ];     
+    });
+
+    piePlotter(dataset[0]);
+});
 
 
-var vis = d3.select('#chart')
+function piePlotter(dataset){
+
+  var data = [{"label":"High", "value": dataset[0]}, 
+              {"label":"Medium", "value":dataset[1]}, 
+              {"label":"Low", "value":dataset[2]}];
+
+  var vis = d3.select('#chart')
             .append("svg:svg")
             .data([data])
             .attr("width", w)
             .attr("height", h)
             .append("svg:g")
             .attr("transform", "translate(" + r + "," + r + ")");
-var pie = d3.layout.pie().value(function(d){return d.value;});
 
-// declare an arc generator function
-//var arc = d3.svg.arc().outerRadius(r);
+  var pie = d3.layout.pie().value(function(d){return d.value;});
 
-var arc = d3.svg.arc()
-    .innerRadius(r/2)
-    .outerRadius(r);
+  // declare an arc generator function
+  var arc = d3.svg.arc()
+      .innerRadius(r/2)
+      .outerRadius(r);
 
-// select paths, use arc generator to draw
-var arcs = vis.selectAll("g.slice").data(pie).enter().append("svg:g").attr("class", "slice");
-arcs.append("svg:path")
-    .attr("fill", function(d, i){
-        return color(i);
-    })
-    .attr("d", function (d) {
-        // log the result of the arc generator to show how cool it is :)
-        console.log(arc(d));
-        return arc(d);
-    });
+  // select paths, use arc generator to draw
+  var arcs = vis.selectAll("g.slice").data(pie).enter().append("svg:g").attr("class", "slice");
+  arcs.append("svg:path")
+      .attr("fill", function(d, i){
+          return color(i);
+      })
+      .attr("d", function (d) {
+          // log the result of the arc generator to show how cool it is :)
+          console.log(arc(d));
+          return arc(d);
+      });
 
-// add the text
-arcs.append("svg:text").attr("transform", function(d){
-			d.innerRadius = 0;
-			d.outerRadius = r;
-    return "translate(" + arc.centroid(d) + ")";}).attr("text-anchor", "middle").text( function(d, i) {
-    return data[i].value+"%";}
-		);
-//Center Text
-vis.append("text")
-      .attr("dy", ".35em")
-      .style("text-anchor", "middle")
-      .style("fill", "rgba(255,255,255,0.85)")
-      .attr("class", "inside_nb")
-      .text(function(d) { return 'NB'; });
+  // add the text
+  arcs.append("svg:text").attr("transform", function(d){
+        d.innerRadius = 0;
+        d.outerRadius = r;
+      return "translate(" + arc.centroid(d) + ")";}).attr("text-anchor", "middle").text( function(d, i) {
+      return data[i].value+"%";}
+      );
+  //Center Text
+  vis.append("text")
+        .attr("dy", ".35em")
+        .style("text-anchor", "middle")
+        .style("fill", "rgba(255,255,255,0.85)")
+        .attr("class", "inside_nb")
+        .text(function(d) { return 'NB'; });
+  
+}
+
+
 
