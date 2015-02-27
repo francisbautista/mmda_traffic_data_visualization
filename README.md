@@ -28,7 +28,7 @@ A python script `selection_engine.py` was used to drill-down through the initial
 * ***day_isolation_engine()**
     * used to isolate data for days of the week per station
 * **day_summary_engine()**
-    * used to collate High Medium Low data for the specific days within the station
+    * used to collate and generate percentage statistics for the High Medium Low data for the specific days within the station
 
 ### Resources Used
 * [Numpy Array Docs](http://docs.scipy.org/doc/numpy/reference/arrays.ndarray.html)
