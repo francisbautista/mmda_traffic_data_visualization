@@ -8,6 +8,8 @@
 ### Introduction
 This project leverages historical traffic volume data collated by the MMDA and Dr. Reina Reyes to give a statistical representation of the **traffic volume** for a **specific station** for a **given line** at a **certain time**. It uses a donut-chart with day and time selectors to represent the statistical breakdown of the chances for the Northbound and Southbound traffic volumes.
 
+It includes a run chart plotting the value of High Medium Low percentages versus time. This allows users to linearly predict traffic volume statistics as time progresses.
+
 It works with a d3.js front-end with data supplied from the [MMDA-Interaksyon](http://mmdatraffic.interaksyon.com/) website parsed and formatted using the included Python scripts.
 
 ### Directions for Use
