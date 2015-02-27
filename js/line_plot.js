@@ -1,10 +1,8 @@
 // InitChart();
 d3.csv("/datavis/data/04_data/s5d04.csv", function(error, data) {
-    //   data.forEach(function(d) {
-    //       d.Hour = parseInt(d.Hour);
-    //       d.nHigh = +d.nHigh; });
     InitChart(data);
 }) ;
+
 function InitChart(data) {
     var vis = d3.select("#visualisation"),
     WIDTH = 1125,
@@ -27,7 +25,6 @@ function InitChart(data) {
       .scale(xRange)
       .tickSize(5)
       .tickSubdivide(true),
-
 
     yAxis = d3.svg.axis()
     .scale(yRange)
@@ -64,6 +61,29 @@ function InitChart(data) {
         .style("text-anchor", "end")
         .text("Percentage:");
 
+    var numberOfTicks = 10;
+
+    var yAxisGrid = d3.svg.axis().scale(yRange)
+      .ticks(numberOfTicks)
+      .tickSize(WIDTH-20, 0)
+      .tickFormat("")
+      .orient("right");
+
+    var xAxisGrid = d3.svg.axis().scale(xRange)
+      .ticks(24)
+      .tickSize(-HEIGHT+20, 1)
+      .tickFormat("")
+      .orient("top");
+
+    vis.append("g")
+    .classed('y', true)
+    .classed('axis', true)
+    .call(yAxisGrid);
+
+    vis.append("g")
+    .classed('x', true)
+    .classed('axis', true)
+    .call(xAxisGrid);
 
     var line = d3.svg.line()
     .x(function (d) {
