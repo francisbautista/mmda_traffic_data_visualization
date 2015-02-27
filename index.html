@@ -27,24 +27,19 @@
           <div class="panel-body">
             <select name="line_select" id="line_select" class="form-control" autofocus>
               <option value="" >Select Line</option>
-              <option value="edsa">EDSA</option>
-              <option value="commonwealth">Commonwealth</option>
-              <option value="quezon avenue">Quezon Avenue</option>
-              <option value="c5">C5</option>
-              <option value="ortigas avenue">Ortigas Avenue</option>
-              <option value="marcos highway">Marcos Highway</option>
-              <option value="roxas boulevard">Roxas Boulevard</option>
-              <option value="slex">SLEX</option>
+              <option value="0" data-name="EDSA" >EDSA</option>
+              <option value="1" data-name="Commonwealth" >Commonwealth</option>
+              <option value="2" data-name="Quezon Avenue" >Quezon Avenue</option>
+              <option value="3" data-name="Espana" >Espana</option>
+              <option value="4" data-name="C5" >C5</option>
+              <option value="5" data-name="Ortigas Avenue" >Ortigas Avenue</option>
+              <option value="6" data-name="Marcos Highway" >Marcos Highway</option>
+              <option value="7" data-name="Roxas Boulevard" >Roxas Boulevard</option>
+              <option value="8" data-name="SLEX" >SLEX</option>
             </select>
             <br>
             <select name="station_select" id="station_select" class="form-control" disabled>
               <option value="">Select Station</option>
-              <option value="active">active</option>
-              <option value="stockroom">stockroom</option>
-              <option value="service unit">service unit</option>
-              <option value="for disposal">for disposal</option>
-              <option value="disposed">disposed</option>
-              <option value="repair">repair</option>
             </select>
           </div>
         </div>
@@ -102,13 +97,18 @@
     <script src="js/bootstrap.min.js"></script>
     <!--<script src="js/d3.js" charset="utf-8"></script>-->
     <!--<script src="http://d3js.org/d3.v3.min.js"></script>-->
-     <script src="js/d3.min.js" charset="utf-8"></script>
+    <script src="js/d3.min.js" charset="utf-8"></script>
     <script src="js/d3.slider.js" charset="utf-8"></script>
     <script src="js/moment.js" charset="utf-8"></script>
     <script src="js/chart.js" charset="utf-8"></script>
     <script src="js/chart_sb.js" charset="utf-8"></script>
-
+    <script src="js/papaparse.js"></script>
     <script src="js/slider.js" charset="utf-8"></script>
+    <script src="js/selectors.js" charset="utf-8"></script>
     <script src="js/main.js" charset="utf-8"></script>
+
+    <script type="text/javascript">
+
+    </script>
   </body>
 </html>
