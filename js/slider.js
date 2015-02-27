@@ -121,10 +121,16 @@ function brushed() {
     brush.extent([value, value]);
   }
 
+
   handle.attr("transform", "translate(" + timeScale(value) + ",0)");
   handle.select('text').text(formatDate(value));
 
-  hour = value.getHours();
+
+    var hour = value.getHours();
+   // console.log(hour);
+    updatePieChart(hour);
+  
+
 
 }
 

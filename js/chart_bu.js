@@ -18,6 +18,7 @@ d3.csv("../data_vis/output/station_day_summary/s0d01_nospace.csv",
        return [ +d["nHigh"], +d["nMed"], + d["nLow"] ];     
     });
 
+    piePlotter(dataset[0]);
 });
 
 }
