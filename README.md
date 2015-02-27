@@ -25,7 +25,7 @@ A python script `selection_engine.py` was used to drill-down through the initial
     * used to drill down to each line
 * **station_selection_engine()**
     * used to drill down to each station
-* ***day_isolation_engine()**
+* **day_isolation_engine()**
     * used to isolate data for days of the week per station
 * **day_summary_engine()**
     * used to collate and generate percentage statistics for the High Medium Low data for the specific days within the station
