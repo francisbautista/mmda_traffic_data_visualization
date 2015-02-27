@@ -7,7 +7,7 @@ d3.csv("/datavis/data/04_data/s11d04.csv", function(error, data) {
 }) ;
 function InitChart(data) {
   var vis = d3.select("#visualisation"),
-    WIDTH = 1100,
+    WIDTH = 1125,
     HEIGHT = 400,
     MARGINS = {
       top: 20,
@@ -42,7 +42,7 @@ function InitChart(data) {
     .attr("class", "y axis")
     .attr("transform", "translate(" + (MARGINS.left) + ",0)")
     .call(yAxis);
-    
+
     var line = d3.svg.line()
     .x(function (d) {
       return xRange(d.hour);
