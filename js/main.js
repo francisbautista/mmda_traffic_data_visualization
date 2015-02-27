@@ -13,6 +13,9 @@ $('#myonoffswitch').change(function(){
 
 });
 
+$(function () {
+	$('[data-toggle="tooltip"]').tooltip()
+})
 
 // $(".onoffswitch").click(function(){
 // 	$("#visualisationSB").show();
