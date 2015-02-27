@@ -9,8 +9,8 @@ var color = d3.scale.ordinal()
     .range(["#af1111","#dbd823","#6ba351"]);
 
 var data = [{"label":"High", "value":20}, 
-		          {"label":"Medium", "value":50}, 
-		          {"label":"Low", "value":30}];
+              {"label":"Medium", "value":50}, 
+              {"label":"Low", "value":30}];
 
 
 var vis = d3.select('#chart_sb')
@@ -52,7 +52,7 @@ arcs.append("svg:text").attr("transform", function(d){
         //return data[i].label+" "+data[i].value+"%";
         return data[i].value+"%";
     }
-		);
+    );
 
 //Center Text
 vis.append("text")

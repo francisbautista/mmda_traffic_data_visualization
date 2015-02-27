@@ -1,6 +1,6 @@
 var line = $('select[name=line_select]').val();
 var station = $('select[name=station_select]').val();
-var when = $('button').data('int');
+var day = $('button').data('int');
 
 
 
@@ -50,13 +50,18 @@ $('select[name=station_select]').change(function() {
 });
 
 
-$('button').click(function() {
+$('button.when-btn').click(function() {
 	var val = $(this).data('label');
 	$("span.when").html(val).show();
 	$("span.when").css("color", "#33691E");
 	$("span.when").css("background-color", "rgba(255, 249, 196,0.8)");
 
-	when = $(this).data('int');
+	day = $(this).data('int');
+
+	console.log(day);
+
+	updatePieChart(7, line, station, day);
+	updatePieChartSB(7, line, station, day);
 
 });
 

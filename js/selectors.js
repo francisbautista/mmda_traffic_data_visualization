@@ -9,7 +9,6 @@ $('select[name=line_select]').change(function() {
 });
 
 function getStations(data) {
-	console.log(line);
 	var result_obj = $.grep(data, function(e){ return e.lineID == line; });
 	var result_json = [];
 		for (var i in result_obj){
@@ -57,5 +56,5 @@ function parseData(url, callBack) {
 
 
 
-// sed -e 's/,\s\+/,/g' s0d01.csv > s0d01_nospace.csv
+// sed -e 's/,\s\+/,/g' s5d03.csv > s5d03_nospace.csv
 

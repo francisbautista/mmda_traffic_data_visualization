@@ -16,7 +16,11 @@ var arc = d3.svg.arc()
     .outerRadius(r);
 
 function init(hour){
-   d3.csv("../data_vis/output/station_day_summary/s0d01_nospace.csv", 
+
+
+  var file = "../data_vis/output/station_day_summary/s0d00_nospace.csv";
+
+   d3.csv(file, 
     function(data) {
       var filtered =  data.filter(function(d) {return d["hour"]==hour });
       var dataset = filtered.map(function(d) { 
@@ -27,9 +31,14 @@ function init(hour){
  
 }
 
-function getData(hour, fn){
+function getData(hour, line, station, day, fn){
 
-   d3.csv("../data_vis/output/station_day_summary/s0d01_nospace.csv", 
+  var file = "../data_vis/output/station_day_summary/s"+station+"d0"+day+"_nospace.csv"
+
+ // var file = "../data_vis/output/station_day_summary/s"+station+"d0"+day+".csv"
+
+
+   d3.csv(file, 
     function(data) {
       var filtered =  data.filter(function(d) {return d["hour"]==hour });
       var dataset = filtered.map(function(d) { 
@@ -73,15 +82,6 @@ function piePlotter(dataset){
       .each(function(d){ this._current = d; })
           .append('title')
           .text(function(d,i){ return data[i].value + '%'; });
-
-  // // add the text
-  // arcs.append("svg:text").attr("transform", function(d){
-  //       d.innerRadius = 0;
-  //       d.outerRadius = r;
-  //     return "translate(" + arc.centroid(d) + ")";}).attr("text-anchor", "middle").text( function(d, i) {
-  //     return data[i].value+"%";}
-  //     );
-
     
   // render the labels
   arcs.append("svg:text")
@@ -104,44 +104,46 @@ function piePlotter(dataset){
 }
 
 
-function updatePieChart(hour)
+function updatePieChart(hour, line, station, day)
 {
-    console.log(hour);    
-    updateArcs(hour);
-    updateLabels(hour);
+    console.log("Line ", line);
+    console.log("Station ", station);
+    console.log("Day ", day);
+    updateArcs(hour, line, station, day);
+    updateLabels(hour, line, station, day);
 }
 
 
 // update the slices of the pie chart
-function updateArcs(hour)
+function updateArcs(hour, line, station, day)
 {
 
-   getData(hour, function(data){
-      console.log(data)
+  getData(hour, line, station, day, function(data){
+      console.log(data);
 
       var data =  [{"label":"High", "value": data[0]}, 
                 {"label":"Medium", "value":data[1]}, 
                 {"label":"Low", "value":data[2]}];
 
-      console.log("Low " + data[2]);
+      console.log("Low " + data[2].value);
     
-    d3.selectAll("#chart path title")
+      d3.selectAll("#chart path title")
         .text(function(d,i){ return data[i].value + '%'; });
     
-    d3.selectAll("#chart path")
+      d3.selectAll("#chart path")
         .data(pie(data))
         .transition()
             .duration(700)
             .attrTween('d', arcTween);
 
-     });
+    });
 }
 
 
 // update the labels of the pie chart
-function updateLabels(hour)
+function updateLabels(hour, line, station, day)
 {
-   getData(hour, function(data){
+   getData(hour, line, station, day, function(data){
      var data =  [{"label":"High", "value": data[0]}, 
         {"label":"Medium", "value":data[1]}, 
         {"label":"Low", "value":data[2]}];
@@ -156,7 +158,6 @@ function updateLabels(hour)
             .text(function(d,i){ 
                 return data[i].value+"%";
             });
-      console.log("label working");
 
   });
 }

@@ -1,3 +1,4 @@
+
 formatDate = d3.time.format("%I:%M %p");
 // parameters
 var margin = {
@@ -128,10 +129,8 @@ function brushed() {
 
     var hour = value.getHours();
    // console.log(hour);
-    updatePieChart(hour);
-  
-
-
+    updatePieChart(hour, line, station, day);
+    //updatePieChartSB(hour, line, station, day);
 }
 
 //hour = brushed();
