@@ -1,19 +1,14 @@
 
-// $(function(){
-// 	$("#visualisationNB").hide();
-// 	$(".onoffswitch").on("click", function(){
-// 		$("#visualisationSB, #visualisationNB").toggle();
-// 	});
-// });
+
 
 $('#myonoffswitch').change(function(){
 	 if (this.checked){
-		$('#visualisationSB').show();
-		$('#visualisationNB').hide();
+		$('#visualisationNB').fadeToggle("slow");
+		$('#visualisationSB').hide();
 	}
 	else {
-		$('#visualisationNB').show();
-		$('#visualisationSB').hide();;
+		$('#visualisationSB').fadeToggle("slow");
+		$('#visualisationNB').hide();
 	}
 
 });
