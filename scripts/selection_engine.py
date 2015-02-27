@@ -167,7 +167,7 @@ def day_sum_writer(lineID,stationID,day,hour,nHigh,nMed,nLow,sHigh,sMed,sLow):
 		fp.write(FINAL_HEADER)
 	else:
 		fp=open(SD_PREFIX+'s'+str(station_ctr)+'d0'+str(day_ctr)+'.csv','a')
-	fp.write("%d,%d,%d,%d, %d,%d,%d, %d,%d,%d\n" % (lineID,stationID,day,hour,nHigh,nMed,nLow,sHigh,sMed,sLow))
+	fp.write("%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n" % (lineID,stationID,day,hour,nHigh,nMed,nLow,sHigh,sMed,sLow))
 	fp.close()
 
 # Creates file for each station with write-append rules.
