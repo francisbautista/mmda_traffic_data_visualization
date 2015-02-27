@@ -42,8 +42,6 @@ var timeScale = d3.time.scale()
 var startValue = timeScale(a);
 var startingValue = def_time;
 
-
-
 // var startValue = timeScale(9);
 // startingValue = 9;
 
@@ -115,6 +113,8 @@ slider.call(brush.event)
 
 function brushed() {
   var value = brush.extent()[0];
+  //var value_hour = value.hours();
+ 
 
   if (d3.event.sourceEvent) { // not a programmatic event
     value = timeScale.invert(d3.mouse(this)[0]);
@@ -123,7 +123,12 @@ function brushed() {
 
   handle.attr("transform", "translate(" + timeScale(value) + ",0)");
   handle.select('text').text(formatDate(value));
+
+  hour = value.getHours();
+
 }
+
+//hour = brushed();
 
 //LIFE SAVER
 //http://bl.ocks.org/zanarmstrong/ddff7cd0b1220bc68a58

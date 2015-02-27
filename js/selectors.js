@@ -1,4 +1,6 @@
-var line = 0;
+
+
+
 
 $('select[name=line_select]').change(function() {
 	line = this.value;
