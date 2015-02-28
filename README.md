@@ -17,7 +17,8 @@ It works with a d3.js front-end with data supplied from the [MMDA-Interaksyon](h
 2. Users will then be able to select specific stations from the Station Dropdown
 3. Day Select will drill-down to the specific day of the week, as traffic data varies as the week progresses.
 4. Users can use the Time Slider to view traffic trends at a specific hour.
-5. The run chart presents H M L statistics in red, yellow, and green lines respectively. This will allow for more linear prediction of traffic versus time. 
+5. The run chart presents H M L statistics in red, yellow, and green lines respectively. This will allow for more linear prediction of traffic versus time.
+6. A Toggle select is included to be able to view trendlines for North and Southbound directions for traffic.
 
 ### Technical Components
 
