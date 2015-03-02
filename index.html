@@ -1,3 +1,11 @@
+<!--
+Authors: Francis Bautista and Eyana Mallari
+Description: Data visualization of historical traffic data to give percentage predictions of traffic volumes.
+Created At: February 28, 2015
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+-->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -59,7 +67,7 @@
               <button type="button" class="btn btn-round btn-default when-btn" data-int="6" data-label="On Sundays">Su</button>
               <button type="button" class="btn btn-round btn-default when-btn"  data-int="7" data-label="Today"><small>Today</small></button>
               <button type="button" class="btn btn-round btn-default when-btn" data-int="8" data-label="Tomorrow"><small>Tom</small></button>
-              <button type="button" class="btn btn-round btn-default" data-int="9" onclick="location.reload()" data-label="Reset" style="background-color: #6BA351"><span class="glyphicon glyphicon-refresh"></span></button>                            
+              <button type="button" class="btn btn-round btn-default" data-int="9" onclick="location.reload()" data-label="Reset" style="background-color: #6BA351"><span class="glyphicon glyphicon-refresh"></span></button>
             </center>
           </div>
         </div>
@@ -87,19 +95,27 @@
 
       <div class="col-lg-12 time-slider">
         <div id="slider7"></div>
-        <div class="onoffswitch">
+        <div class="onoffswitch" data-toggle="tooltip" data-placement="right" title="Click to Toggle Direction">
             <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" >
             <label class="onoffswitch-label" for="myonoffswitch">
                 <span class="onoffswitch-inner"></span>
                 <span class="onoffswitch-switch"></span>
             </label>
         </div>
-        <svg id="visualisation" width="1250" height="500"></svg>
+        <svg id="visualisationNB" class="linegraph" width="1250" height="500"  style="display:none;"></svg>
+        <svg id="visualisationSB" class="linegraph"  width="1250" height="500"></svg>
+
       </div>
+
     </div><!--container-->
 
-    <br>
-    <br>
+    <div class="footer">
+        <center>
+            <h4 class="footer-text">Traffic Forecasting Visualization</h4>
+            <h5 class="footer-text">Bautista, Mallari © 2015</h5>
+       </center>
+       <br>
+    </div>
 
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>-->
     <script src="js/jquery-1.11.1.min.js"></script>
@@ -111,13 +127,12 @@
     <script src="js/moment.js" charset="utf-8"></script>
     <script src="js/selectors.js" charset="utf-8"></script>
     <script src="js/papaparse.js"></script>
-   
+
     <script src="js/slider.js" charset="utf-8"></script>
     <script src="js/main.js" charset="utf-8"></script>
     <script src="js/chart.js" charset="utf-8"></script>
-    <script src="js/chart_sb.js" charset="utf-8"></script>
-    
-     <script src="js/global.js" charset="utf-8"></script>
+    <script src="js/line_plot_nb.js"></script>
+    <script src="js/global.js" charset="utf-8"></script>
     <script type="text/javascript">
 
     </script>

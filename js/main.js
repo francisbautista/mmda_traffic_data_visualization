@@ -1,16 +1,35 @@
+/*
+Authors: Francis Bautista and Eyana Mallari
+Description: Data visualization of historical traffic data to give percentage predictions of traffic volumes.
+Created At: February 28, 2015
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*/
 var line = $('select[name=line_select]').val();
 
 var station = $('select[name=station_select]').val();
 var day = $('button').data('int');
 
+$('#myonoffswitch').change(function(){
+	 if (this.checked){
+		$('#visualisationNB').fadeToggle("slow");
+		$('#visualisationSB').hide();
+	}
+	else {
+		$('#visualisationSB').fadeToggle("slow");
+		$('#visualisationNB').hide();
+	}
+
+});
+
 $(function() {
 
-	
-
+	$('[data-toggle="tooltip"]').tooltip();
     $("span.line_name").html("Edsa").show();
     $("span.station_name").html("Balintawak").show();
     $("span.when").html("On Mondays").show();
-    
+
     //$("button#default-day").css("background-color", "rgba(255,255,255,0.9)");
 
     $("span.line_name").css("color", "#33691E");
@@ -25,7 +44,7 @@ $(function() {
 
 $('select[name=line_select]').change(function() {
 	$("button#default-day").css("background-color", "rgba(255,255,255,0.4)");
-	
+
 
 	var val = $(this).find(':selected').data('name');
 
@@ -33,7 +52,7 @@ $('select[name=line_select]').change(function() {
 		$("span.line_name").html(val).show();
 
 		var temp = $('select[name=station_select]').val();
-		
+
 		if (temp !== ''){
 			$("span.station_name").hide();
 		}
@@ -50,7 +69,7 @@ $('select[name=line_select]').change(function() {
 		$("span.station_name").html("Select Station").show();
     	$("span.when").html("Select Day").show();
 
-		$($('select[name=station_select]').removeAttr('disabled')).focus();	
+		$($('select[name=station_select]').removeAttr('disabled')).focus();
     }
     else {
         $("span.line_name").hide();
@@ -58,9 +77,6 @@ $('select[name=line_select]').change(function() {
     }
 
     line = this.value;
-        
-	
-
 });
 
 $('select[name=station_select]').change(function() {
@@ -72,7 +88,7 @@ $('select[name=station_select]').change(function() {
 		$("span.station_name").html(val).show;
 		$("span.station_name").css("color", "#33691E");
 		$("span.station_name").css("background-color", "rgba(255, 249, 196,0.8)");
-		//$("span.line_name").fadeIn("slow");		
+		//$("span.line_name").fadeIn("slow");
     }
     else {
         $("span.station_name").hide();
@@ -95,12 +111,7 @@ $('button.when-btn').click(function() {
 	hour = brush.extent()[0].getHours();
 
 	console.log("Day " + day);
-	
+
 	console.log("Brush " + hour);
 	updatePieChart(hour, line, station, day);
-
-
-
 });
-
-

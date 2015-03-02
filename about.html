@@ -1,0 +1,101 @@
+<!--
+Authors: Francis Bautista and Eyana Mallari
+Description: Data visualization of historical traffic data to give percentage predictions of traffic volumes.
+Created At: February 28, 2015
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Data Visualization</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/d3.slider.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+</head>
+<body>
+    <section id="about_head" class="row" data-autoheight="true" >
+        <br>
+        <div class="container">
+            <h2 class="logo">Some fcking Logo</h2>
+            <div class="col-md-offset-2 col-md-8 about_splash">
+                <center>
+                    <h1><em style="color: #34A7C1;">Intelligent</em> <span style="color: #868787;">Traffic Forecasting</span>
+                    </h1>
+                    <span id="support_text">data-driven dashboard on H-M-L traffic volume for Metro Manila</span>
+                </center>
+            </div>
+        </div>
+    </section>
+
+    <section id="about_pie" class="row" data-autoheight="true">
+        <div class="container">
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="col-md-4 col-md-offset-1">
+                <div class="image" id="pie_img"></div>​
+            </div>
+            <div class="col-md-6">
+                <br>
+                <br>
+                <br>
+                <br>
+                <h2 style="color: white;"> Donut Chart </h2>
+                <h3 style="color: gray; margin-top:0;"> [doh-nuh t, -nuht] </h3>
+                <p class="about_desc">This donut chart visualizes the frequency percentages for high, medium, and low traffic volume recordings for the specific station at a specific time and day. The red slice represents heavy traffic, yellow for medium, and green for light. NB indicates the northbound line, and SB indicates the southbound line.</p>
+                <br>
+                <p class="about_desc">The MMDA Data 2-1-0 values were used for the H-M-L value analysis. -1 values were disregarded from the data set and taken away form the total percentage tally.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="about_pie" class="row" data-autoheight="true">
+        <div class="container">
+            <br>
+            <br>
+            <center>
+            <div class="col-md-12">
+                <div class="image" id="line_img"></div>​
+            </div>
+            <center>
+            <div class="col-md-6">
+                <br>
+                <br>
+                <br>
+                <br>
+                <h2 style="color: white;"> Donut Chart </h2>
+                <h3 style="color: gray; margin-top:0;"> [doh-nuh t, -nuht] </h3>
+                <p class="about_desc">This donut chart visualizes the frequency percentages for high, medium, and low traffic volume recordings for the specific station at a specific time and day. The red slice represents heavy traffic, yellow for medium, and green for light. NB indicates the northbound line, and SB indicates the southbound line.</p>
+                <br>
+                <p class="about_desc">The MMDA Data 2-1-0 values were used for the H-M-L value analysis. -1 values were disregarded from the data set and taken away form the total percentage tally.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- <div class="footer">
+    <center>
+    <h4 class="footer-text">Traffic Forecasting Visualization</h4>
+    <h5 class="footer-text">Bautista, Mallari © 2015</h5>
+</center>
+<br>
+</div> -->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>-->
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<!--<script src="js/d3.js" charset="utf-8"></script>-->
+<!--<script src="http://d3js.org/d3.v3.min.js"></script>-->
+
+<script src="js/main.js" charset="utf-8"></script>
+</body>
+</html>
