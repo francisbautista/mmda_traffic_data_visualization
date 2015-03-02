@@ -1,3 +1,6 @@
+
+
+
 formatDate = d3.time.format("%I:%M %p");
 // parameters
 var margin = {
@@ -11,18 +14,44 @@ var margin = {
 
 
 // scale function
+
+// var a = new Date('2014-01-01 00:00:00');
+// var b =  new Date('2014-01-01 23:59:59');
+
+
+var day = moment(4 * 60000);
+console.log(a);
+
+
+var temp = moment([2014, 01, 01, 15, 00, 00, 00]).format("h:mm a");
+console.log(temp);
+
+var a = moment([2015, 01, 01, 00, 00, 00, 00]); //start 
+var b =  moment([2015, 01, 01, 23, 59, 00, 00]); //end
+var def_time = moment([2015, 01, 01, 7, 00, 00, 00]);
+
 var timeScale = d3.time.scale()
-  .domain([new Date('2014-01-01 00:00:00'), new Date('2014-01-01 23:59:59')])
+  .domain([a, b])
+ //.domain([0, 24])
   .range([0, width])
   .clamp(true);
 
 
-// initial value
-var startValue = timeScale(new Date('2014-01-01 00:00:00'));
-startingValue = new Date('2014-01-01 00:00:00');
+//initial value
+
+// var startValue = new Date('2014-01-01 00:00:00');
+// startingValue = new Date('2014-01-01 00:00:00');
+
+var startValue = timeScale(a);
+var startingValue = def_time;
+
+// var startValue = timeScale(9);
+// startingValue = 9;
 
 //////////
 
+var startValue = timeScale(a);
+var startingValue = def_time;
 // defines brush
 var brush = d3.svg.brush()
   .x(timeScale)
@@ -46,6 +75,7 @@ svg.append("g")
   .orient("bottom")
   .tickFormat(function(d) {
     return formatDate(d);
+   //return d
   })
   .tickSize(0)
   .ticks(d3.time.hour,4)
@@ -54,7 +84,6 @@ svg.append("g")
   .tickValues(timeScale.ticks(10).concat( timeScale.domain() )))
   .select(".domain")
   .select(function() {
-    console.log(this);
     return this.parentNode.appendChild(this.cloneNode(true));
   })
   .attr("class", "halo");
@@ -81,23 +110,42 @@ handle.append("path")
   .attr("d", "M 0 -20 V 20")
 
 handle.append('text')
-  .text(startingValue)
+  .text(startingValue.format('h:mm a'))
+  //.text(startingValue)
   .attr("transform", "translate(" + (-18) + " ," + (height / 2 - 25) + ")");
 
-slider
-  .call(brush.event)
+slider.call(brush.event)
 
 function brushed() {
   var value = brush.extent()[0];
+  //var value_hour = value.hours();
+ 
 
   if (d3.event.sourceEvent) { // not a programmatic event
     value = timeScale.invert(d3.mouse(this)[0]);
     brush.extent([value, value]);
   }
 
+
   handle.attr("transform", "translate(" + timeScale(value) + ",0)");
   handle.select('text').text(formatDate(value));
+
+
+    var hour = value.getHours();
+   // console.log(hour);
+    updatePieChart(hour, line, station, day);
+    //updatePieChartSB(hour, line, station, day);
 }
+
+
+
+
+
+
+
+
+
+//hour = brushed();
 
 //LIFE SAVER
 //http://bl.ocks.org/zanarmstrong/ddff7cd0b1220bc68a58
