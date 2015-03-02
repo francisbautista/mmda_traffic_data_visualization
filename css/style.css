@@ -7,6 +7,33 @@ License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
+#about_head {
+	background-color: #fff;
+}
+
+section { height: 100vh; }
+
+.about_splash {
+	margin-top: 15em;
+}
+
+.about_desc {
+	color: white;
+	margin:0;
+	font-size: 1.2em;
+}
+
+#support_text {
+	margin-top:0;
+	padding-top:0;
+	color: #868787;
+	font-size: 1.5em;
+}
+div.image#pie_img {
+	content:url(../assets/pie_chart.png);
+	margin-top: 5em;
+}
+
 .axis line {
 	fill: none;
 	stroke: grey;
