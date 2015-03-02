@@ -1,6 +1,8 @@
 var w = 300;
 var h = 300;
 var r = h/2;
+var now = moment().hour();
+var today = moment().day() - 1;
 
 
 //var color = d3.scale.category20b();
@@ -35,7 +37,7 @@ function init(hour, line, station, day){
       console.log("Line " + line);
       console.log("Station " + station);
       console.log("Day " + day);
-      console.log("Hour" + station);
+      console.log("Hour " + hour);
      
     });
 
@@ -45,12 +47,32 @@ function init(hour, line, station, day){
 function getData(hour, line, station, day, div, fn){
 
   var days = [0,1,2,3,4,5,6];
-  var file = "../data_vis/data/0"+line+"_data/s"+station+"d0"+day+".csv"
+
+
+  switch(day){
+    case 7:
+      day = today
+      console.log("Today " + day);   
+      break;
+    case 8:
+      day = today + 1;
+        //If today is sunday
+        if (day==7){ day = 0; }  
+      console.log("Tomorrow " + day);    
+      break    
+  } 
+
+
+  var file = "../data_vis/data/0"+line+"_data/s"+station+"d0"+day+".csv";
+
 
 
    d3.csv(file, 
     function(data) {
-      var filtered =  data.filter(function(d) {return d["hour"]==hour });
+
+      var filtered =  data.filter(function(d) {
+        return d["hour"]==hour;
+      });
       var dataset = filtered.map(function(d) { 
          return [ +d["nHigh"], +d["nMed"], + d["nLow"] ];     
       });
@@ -183,7 +205,7 @@ function updatePieChart(hour, line, station, day)
     console.log("Line " + line);
     console.log("Station " + station);
     console.log("Day " + day);
-    console.log("Hour" + station);
+    console.log("Hour " + hour);
     updateArcs(hour, line, station, day, 
       "#chart");
     updateLabels(hour, line, station, day, "#chart");
