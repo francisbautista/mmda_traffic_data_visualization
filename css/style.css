@@ -80,6 +80,11 @@ div.image#line_img {
 
 }
 
+.no-space{
+	margin: 0 auto;
+	padding: 0 auto;
+}
+
 .btn-default {
 	border: none;
 	background-color: rgba(255,255,255,0.4);
