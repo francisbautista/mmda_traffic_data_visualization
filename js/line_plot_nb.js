@@ -19,11 +19,14 @@ function getDataLine(hour, line, station, day){
   var file = "../data_vis/data/0"+line+"_data/s"+station+"d0"+day+".csv";
 
   d3.csv(file, function(error, data) {
-          InitChartS(data);
-          InitChart(data);
-          alert("Changing files")
 
-    }) ;
+
+      d3.selectAll("path").remove();
+      InitChartS(data);
+      InitChart(data);
+
+
+  }) ;
 
   console.log("Line for LG " + line);
   console.log("Station for LG " + station);
