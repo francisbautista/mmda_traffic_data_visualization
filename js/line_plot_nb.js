@@ -8,6 +8,31 @@ d3.csv("/data_vis/data/04_data/s5d04.csv", function(error, data) {
 //
 // }
 
+function updateData() {
+    // Get the data again
+    d3.csv("data-alt.csv", function(error, data) {
+
+    	// Scale the range of the data again
+    	xRange.domain(d3.extent(data, function(d) { return d.nHigh; }));
+	    yRange.domain([0, d3.max(data, function(d) { return d.hour; })]);
+
+    // Select the section we want to apply our changes to
+    var svg = d3.select("#visualisationNB").transition();
+
+    // Make the changes
+        vis.select(".line")   // change the line
+            .duration(750)
+            .attr("d", valueline(data));
+        vis.select(".x.axis") // change the x axis
+            .duration(750)
+            .call(xAxis);
+        vis.select(".y.axis") // change the y axis
+            .duration(750)
+            .call(yAxis);
+
+    });
+}
+
 function InitChart(data) {
     var vis = d3.select("#visualisationNB"),
     WIDTH = 1125,
