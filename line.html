@@ -25,38 +25,49 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
       <br>
       <div class="col-lg-12">
       <h2><span style="color: #6BA351">Traffic Forecasting </span><span style="color:#DBD823">Visualization</span></h2>
-      <h4>Based on past traffic data, what are the chances of heavy traffic in <span class="line_name label label-default">Select Line</span> <span class="station_name label label-default">Select Station</span> <span class="when label label-default">Select When</span>?</h4>
+      <h4>Traffic Trend in <span class="line_name label label-default">Select Line</span> <span class="station_name label label-default">Select Station</span> <span class="when label label-default">Select When</span></h4>
       </div>
-      <div class="col-lg-3 selectors">
+      <div class="col-lg-12 selectors">
+
+      <div class="col-lg-7">
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">Where</h3>
           </div>
           <div class="panel-body">
-            <select name="line_select" id="line_select" class="form-control" autofocus>
-              <option value="" >Select Line</option>
-              <option value="0" data-name="EDSA" >EDSA</option>
-              <option value="1" data-name="Commonwealth" >Commonwealth</option>
-              <option value="2" data-name="Quezon Avenue" >Quezon Avenue</option>
-              <option value="3" data-name="Espana" >Espana</option>
-              <option value="4" data-name="C5" >C5</option>
-              <option value="5" data-name="Ortigas Avenue" >Ortigas Avenue</option>
-              <option value="6" data-name="Marcos Highway" >Marcos Highway</option>
-              <option value="7" data-name="Roxas Boulevard" >Roxas Boulevard</option>
-              <option value="8" data-name="SLEX" >SLEX</option>
-            </select>
-            <br>
-            <select name="station_select" id="station_select" class="form-control" disabled="">
-              <option value="">Select Station</option>
-            </select>
+            <div class="col-lg-6">
+              <select name="line_select" id="line_select" class="form-control" autofocus>
+                <option value="" >Select Line</option>
+                <option value="0" data-name="EDSA" >EDSA</option>
+                <option value="1" data-name="Commonwealth" >Commonwealth</option>
+                <option value="2" data-name="Quezon Avenue" >Quezon Avenue</option>
+                <option value="3" data-name="Espana" >Espana</option>
+                <option value="4" data-name="C5" >C5</option>
+                <option value="5" data-name="Ortigas Avenue" >Ortigas Avenue</option>
+                <option value="6" data-name="Marcos Highway" >Marcos Highway</option>
+                <option value="7" data-name="Roxas Boulevard" >Roxas Boulevard</option>
+                <option value="8" data-name="SLEX" >SLEX</option>
+              </select>             
+            </div>
+
+            <div class="col-lg-6">
+              <select name="station_select" id="station_select" class="form-control" disabled>
+                <option value="">Select Station</option>
+              </select>
+            </div>
+
+            
+
           </div>
         </div>
+      </div>
 
+      <div class="col-lg-5">
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">When</h3>
           </div>
-          <div class="panel-body">
+          <div class="panel-body" style="padding: 0.93em;">
             <center>
               <button type="button" id="default-day" class="btn btn-round btn-default when-btn" data-int="0" data-label="On Mondays">Mo</button>
               <button type="button" class="btn btn-round btn-default when-btn" data-int="1" data-label="On Tuesdays">Tu</button>
@@ -71,31 +82,14 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
             </center>
           </div>
         </div>
+      </div>  
+
       </div>
 
-
-      <div class="col-lg-9">
-
-      <center>
-        <div class="col-lg-6">
-          <br>
-          <div id="chart"></div>
-        </div>
-        <div class="col-lg-6">
-          <br>
-          <div id="chart_sb"></div>
-        </div>
-          <div class="col-lg-12" style="margin: 0; padding: 0">
-          <span class="glyphicon glyphicon-stop" aria-hidden="true" style="color:#af1111;"></span> Heavy
-          <span class="glyphicon glyphicon-stop" aria-hidden="true" style="color:#dbd823;"></span> Medium
-          <span class="glyphicon glyphicon-stop" aria-hidden="true" style="color:#6ba351;"></span> Low
-        </div>
-      </center>
-      </div>
 
       <div class="col-lg-12 time-slider">
-        <div id="slider7"></div>
-<!--         <div class="onoffswitch" data-toggle="tooltip" data-placement="right" title="Click to Toggle Direction">
+       
+        <div class="onoffswitch" data-toggle="tooltip" data-placement="right" title="Click to Toggle Direction">
             <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" >
             <label class="onoffswitch-label" for="myonoffswitch">
                 <span class="onoffswitch-inner"></span>
@@ -104,7 +98,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
         </div>
         <svg id="visualisationNB" class="linegraph" width="1250" height="500"  style="display:none;"></svg>
         <svg id="visualisationSB" class="linegraph"  width="1250" height="500"></svg>
- -->
+
       </div>
 
     </div><!--container-->
@@ -131,7 +125,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
     <script src="js/slider.js" charset="utf-8"></script>
     <script src="js/main.js" charset="utf-8"></script>
     <script src="js/chart.js" charset="utf-8"></script>
-    // <script src="js/line_plot_nb.js"></script>
+    <script src="js/line_plot_nb.js"></script>
     <script src="js/global.js" charset="utf-8"></script>
     <script type="text/javascript">
 
