@@ -26,7 +26,7 @@ console.log(a);
 var temp = moment([2014, 01, 01, 15, 00, 00, 00]).format("h:mm a");
 console.log(temp);
 
-var a = moment([2015, 01, 01, 00, 00, 00, 00]); //start 
+var a = moment([2015, 01, 01, 00, 00, 00, 00]); //start
 var b =  moment([2015, 01, 01, 23, 59, 00, 00]); //end
 var def_time = moment([2015, 01, 01, 7, 00, 00, 00]);
 
@@ -119,7 +119,7 @@ slider.call(brush.event)
 function brushed() {
   var value = brush.extent()[0];
   //var value_hour = value.hours();
- 
+
 
   if (d3.event.sourceEvent) { // not a programmatic event
     value = timeScale.invert(d3.mouse(this)[0]);
@@ -132,7 +132,7 @@ function brushed() {
 
 
     var hour = value.getHours();
-   // console.log(hour);
+   console.log("Brush " + value);
     updatePieChart(hour, line, station, day);
     //updatePieChartSB(hour, line, station, day);
 }

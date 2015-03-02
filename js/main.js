@@ -1,4 +1,3 @@
-
 /*
 Authors: Francis Bautista and Eyana Mallari
 Description: Data visualization of historical traffic data to give percentage predictions of traffic volumes.
@@ -24,14 +23,9 @@ $('#myonoffswitch').change(function(){
 
 });
 
-$(function () {
-	$('[data-toggle="tooltip"]').tooltip()
-})
-
 $(function() {
 
-
-
+	$('[data-toggle="tooltip"]').tooltip();
     $("span.line_name").html("Edsa").show();
     $("span.station_name").html("Balintawak").show();
     $("span.when").html("On Mondays").show();
@@ -83,9 +77,6 @@ $('select[name=line_select]').change(function() {
     }
 
     line = this.value;
-
-
-
 });
 
 $('select[name=station_select]').change(function() {
@@ -123,7 +114,4 @@ $('button.when-btn').click(function() {
 
 	console.log("Brush " + hour);
 	updatePieChart(hour, line, station, day);
-
-
-
 });

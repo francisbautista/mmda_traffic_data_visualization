@@ -1,5 +1,5 @@
 // InitChart();
-d3.csv("/datavis/data/04_data/s5d04.csv", function(error, data) {
+d3.csv("/data_vis/data/04_data/s5d04.csv", function(error, data) {
     InitChart(data);
     InitChartS(data);
 }) ;
