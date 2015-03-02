@@ -1,11 +1,23 @@
 var line = $('select[name=line_select]').val();
+
 var station = $('select[name=station_select]').val();
 var day = $('button').data('int');
 
 $(function() {
-    $('select[name=line_select]').val(0);
-    $('select[name=select_select]').val(0);
-    $("button#default-day").css("background-color", "rgba(255,255,255,0.9)");
+    $("span.line_name").html("Edsa").show();
+    $("span.station_name").html("Balintawak").show();
+    $("span.when").html("On Mondays").show();
+    
+    //$("button#default-day").css("background-color", "rgba(255,255,255,0.9)");
+
+    $("span.line_name").css("color", "#33691E");
+	$("span.line_name").css("background-color", "rgba(255, 249, 196,0.8)");
+
+	$("span.station_name").css("color", "#33691E");
+	$("span.station_name").css("background-color", "rgba(255, 249, 196,0.8)");
+
+	$("span.when").css("color", "#33691E");
+	$("span.when").css("background-color", "rgba(255, 249, 196,0.8)");
 });
 
 $('select[name=line_select]').change(function() {
@@ -23,8 +35,18 @@ $('select[name=line_select]').change(function() {
 			$("span.station_name").hide();
 		}
 
-		$("span.line_name").css("color", "#33691E");
+    	$("span.line_name").css("color", "#33691E");
 		$("span.line_name").css("background-color", "rgba(255, 249, 196,0.8)");
+
+		$("span.station_name").css("color", "#aaa");
+		$("span.station_name").css("background-color", "rgba(141, 142, 142, 0.2)");
+
+		$("span.when").css("color", "#aaa");
+		$("span.when").css("background-color", "rgba(141, 142, 142, 0.2)");
+
+		$("span.station_name").html("Select Station").show();
+    	$("span.when").html("Select Day").show();
+
 		$($('select[name=station_select]').removeAttr('disabled')).focus();	
     }
     else {
@@ -59,11 +81,11 @@ $('select[name=station_select]').change(function() {
 
 
 $('button.when-btn').click(function() {
-	$("button#default-day").css("background-color", "rgba(255,255,255,0.4)");
+	//$("button#default-day").css("background-color", "rgba(255,255,255,0.4)");
 	var val = $(this).data('label');
 	$("span.when").html(val).show();
 	$("span.when").css("color", "#33691E");
-	$("span.when").css("background-color", "rgba(255, 249, 196,0.8)");
+	$("span.when").css("background-color", "rgba(255, 249, 196,0.8)")
 
 	day = $(this).data('int');
 

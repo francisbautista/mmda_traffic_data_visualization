@@ -25,7 +25,12 @@ function init(hour, line, station, day){
          return [ +d["nHigh"], +d["nMed"], + d["nLow"] ];     
       });
 
+      var dataset_sb = filtered.map(function(d) { 
+         return [ +d["sHigh"], +d["sMed"], + d["sLow"] ];     
+      });
+
       piePlotter(dataset[0]);
+      piePlotter_SB(dataset_sb[0]);
 
       console.log("Line " + line);
       console.log("Station " + station);
@@ -37,8 +42,9 @@ function init(hour, line, station, day){
 } 
 
 
-function getData(hour, line, station, day, fn){
+function getData(hour, line, station, day, div, fn){
 
+  var days = [0,1,2,3,4,5,6];
   var file = "../data_vis/data/0"+line+"_data/s"+station+"d0"+day+".csv"
 
 
@@ -49,7 +55,17 @@ function getData(hour, line, station, day, fn){
          return [ +d["nHigh"], +d["nMed"], + d["nLow"] ];     
       });
 
-      fn(dataset[0]);
+      var dataset_sb = filtered.map(function(d) { 
+         return [ +d["sHigh"], +d["sMed"], + d["sLow"] ];     
+      });
+
+      if (div=="#chart"){
+        fn(dataset[0]);
+      }
+      else {
+        fn(dataset_sb[0]);
+      }
+      
      
     });
 
@@ -64,7 +80,7 @@ function piePlotter(dataset){
               {"label":"Medium", "value":dataset[1]}, 
               {"label":"Low", "value":dataset[2]}];
 
-  var vis = d3.select('#chart')
+  var vis = d3.select("#chart")
             .append("svg:svg")
             .data([data])
             .attr("width", w)
@@ -109,6 +125,58 @@ function piePlotter(dataset){
   
 }
 
+function piePlotter_SB(dataset){
+
+  var data = [{"label":"High", "value": dataset[0]}, 
+              {"label":"Medium", "value":dataset[1]}, 
+              {"label":"Low", "value":dataset[2]}];
+
+  var vis = d3.select("#chart_sb")
+            .append("svg:svg")
+            .data([data])
+            .attr("width", w)
+            .attr("height", h)
+            .append("svg:g")
+            .attr("transform", "translate(" + r + "," + r + ")");
+
+
+  // select paths, use arc generator to draw
+  var arcs = vis.selectAll("g.slice").data(pie).enter().append("svg:g").attr("class", "slice");
+
+  arcs.append("svg:path")
+      .attr("fill", function(d, i){
+          return color(i);
+      })
+      .attr("d", function (d) {
+          // log the result of the arc generator to show how cool it is :)
+          console.log(arc(d));
+          return arc(d);
+      })
+      .each(function(d){ this._current = d; })
+          .append('title')
+          .text(function(d,i){ return data[i].value + '%'; });
+    
+  // render the labels
+  arcs.append("svg:text")
+      .attr("transform", function(d){
+          return "translate(" + arc.centroid(d) + ")";
+      })
+      .attr("text-anchor", "middle")
+      .text(function(d,i){ 
+          return data[i].value+"%";
+      });
+
+  //Center Text
+  vis.append("text")
+        .attr("dy", ".35em")
+        .style("text-anchor", "middle")
+        .style("fill", "rgba(255,255,255,0.85)")
+        .attr("class", "inside_sb")
+        .text(function(d) { return 'SB'; });
+  
+}
+
+
 
 function updatePieChart(hour, line, station, day)
 {
@@ -116,16 +184,24 @@ function updatePieChart(hour, line, station, day)
     console.log("Station " + station);
     console.log("Day " + day);
     console.log("Hour" + station);
-    updateArcs(hour, line, station, day);
-    updateLabels(hour, line, station, day);
+    updateArcs(hour, line, station, day, 
+      "#chart");
+    updateLabels(hour, line, station, day, "#chart");
+
+    updateArcs(hour, line, station, day, 
+      "#chart");
+
+    updateArcs(hour, line, station, day, "#chart_sb");
+
+    updateLabels(hour, line, station, day, "#chart_sb");
 }
 
 
 // update the slices of the pie chart
-function updateArcs(hour, line, station, day)
+function updateArcs(hour, line, station, day, div)
 {
 
-  getData(hour, line, station, day, function(data){
+  getData(hour, line, station, day, div, function(data){
       console.log(data);
 
       var data =  [{"label":"High", "value": data[0]}, 
@@ -134,10 +210,10 @@ function updateArcs(hour, line, station, day)
 
       console.log("Low " + data[2].value);
     
-      d3.selectAll("#chart path title")
+      d3.selectAll(div + " path title")
         .text(function(d,i){ return data[i].value + '%'; });
     
-      d3.selectAll("#chart path")
+      d3.selectAll(div + " path")
         .data(pie(data))
         .transition()
             .duration(700)
@@ -148,14 +224,14 @@ function updateArcs(hour, line, station, day)
 
 
 // update the labels of the pie chart
-function updateLabels(hour, line, station, day)
+function updateLabels(hour, line, station, day, div)
 {
-   getData(hour, line, station, day, function(data){
+   getData(hour, line, station, day, div, function(data){
      var data =  [{"label":"High", "value": data[0]}, 
         {"label":"Medium", "value":data[1]}, 
         {"label":"Low", "value":data[2]}];
 
-    d3.selectAll("#chart text")
+    d3.selectAll(div + " text")
         .data(pie(data))
         .transition()
             .duration(700)

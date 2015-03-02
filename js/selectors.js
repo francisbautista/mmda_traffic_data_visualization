@@ -19,6 +19,17 @@ function getStations(data) {
 
 }
 
+function getEdsaStations() {
+	var result_obj = $.grep(data, function(e){ return e.lineID == 0; });
+	var result_json = [];
+		for (var i in result_obj){
+			x = JSON.stringify(result_obj[i])
+			result_json.push(x);
+		}
+	optionWriter(result_obj);
+
+}
+
 function optionWriter(result){
 	$('select[name=station_select]').empty();
 
