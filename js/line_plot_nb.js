@@ -20,7 +20,6 @@ function getDataLine(hour, line, station, day){
 
   d3.csv(file, function(error, data) {
           InitChartS(data);
-          updateData(data);
           InitChart(data);
           alert("Changing files")
 
