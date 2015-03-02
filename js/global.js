@@ -4,13 +4,15 @@ var station = 0;
 var day = 0;
 var hour = 7;
 
-init(hour);
+//function getData(hour, line, station, day, fn)
+
+init(hour, line, station, day);
 // init_sb(hour);
 
 function reset(){
-	var line = 4;
+	var line = 0;
 	var station = 0;
-	var day = 1;
+	var day = 0;
 	var hour = 7;
 	updatePieChart(hour, line, station, day)
 }

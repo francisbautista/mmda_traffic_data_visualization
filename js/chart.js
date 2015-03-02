@@ -15,32 +15,31 @@ var arc = d3.svg.arc()
     .innerRadius(r/2)
     .outerRadius(r);
 
-function init(hour){
+function init(hour, line, station, day){
 
+  var file = "../data_vis/data/0"+line+"_data/s"+station+"d0"+day+".csv"
+   d3.csv(file, 
+    function(data) {
+      var filtered =  data.filter(function(d) {return d["hour"]==hour });
+      var dataset = filtered.map(function(d) { 
+         return [ +d["nHigh"], +d["nMed"], + d["nLow"] ];     
+      });
 
-  // var file = "../data_vis/output/station_day_summary/s0d00_nospace.csv";
+      piePlotter(dataset[0]);
 
-  //  d3.csv(file, 
-  //   function(data) {
-  //     var filtered =  data.filter(function(d) {return d["hour"]==hour });
-  //     var dataset = filtered.map(function(d) { 
-  //        return [ +d["nHigh"], +d["nMed"], + d["nLow"] ];     
-  //     });
+      console.log("Line " + line);
+      console.log("Station " + station);
+      console.log("Day " + day);
+      console.log("Hour" + station);
+     
+    });
 
+} 
 
-  //     piePlotter(dataset[0]);
-  // });
-
-  var dataset = [0,0,100];
-  piePlotter(dataset);
- 
-}
 
 function getData(hour, line, station, day, fn){
 
-  var file = "../data_vis/output/station_day_summary/s"+station+"d0"+day+"_nospace.csv"
-
- // var file = "../data_vis/output/station_day_summary/s"+station+"d0"+day+".csv"
+  var file = "../data_vis/data/0"+line+"_data/s"+station+"d0"+day+".csv"
 
 
    d3.csv(file, 
@@ -55,6 +54,8 @@ function getData(hour, line, station, day, fn){
     });
 
 }
+
+
 
 
 function piePlotter(dataset){
@@ -111,9 +112,10 @@ function piePlotter(dataset){
 
 function updatePieChart(hour, line, station, day)
 {
-    console.log("Line ", line);
-    console.log("Station ", station);
-    console.log("Day ", day);
+    console.log("Line " + line);
+    console.log("Station " + station);
+    console.log("Day " + day);
+    console.log("Hour" + station);
     updateArcs(hour, line, station, day);
     updateLabels(hour, line, station, day);
 }

@@ -2,9 +2,16 @@ var line = $('select[name=line_select]').val();
 var station = $('select[name=station_select]').val();
 var day = $('button').data('int');
 
-
+$(function() {
+    $('select[name=line_select]').val(0);
+    $('select[name=select_select]').val(0);
+    $("button#default-day").css("background-color", "rgba(255,255,255,0.9)");
+});
 
 $('select[name=line_select]').change(function() {
+	$("button#default-day").css("background-color", "rgba(255,255,255,0.4)");
+	
+
 	var val = $(this).find(':selected').data('name');
 
     if (this.value !==  '') {
@@ -32,6 +39,7 @@ $('select[name=line_select]').change(function() {
 });
 
 $('select[name=station_select]').change(function() {
+	$("button#default-day").css("background-color", "rgba(255,255,255,0.4)");
 	var val = $(this).find(':selected').data('name');
 
     if (this.value != '') {
@@ -51,6 +59,7 @@ $('select[name=station_select]').change(function() {
 
 
 $('button.when-btn').click(function() {
+	$("button#default-day").css("background-color", "rgba(255,255,255,0.4)");
 	var val = $(this).data('label');
 	$("span.when").html(val).show();
 	$("span.when").css("color", "#33691E");
@@ -58,7 +67,8 @@ $('button.when-btn').click(function() {
 
 	day = $(this).data('int');
 
-	console.log(day);
+	console.log("Day " + day);
+	
 
 	updatePieChart(7, line, station, day);
 	updatePieChartSB(7, line, station, day);
