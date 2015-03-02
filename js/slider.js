@@ -134,6 +134,7 @@ function brushed() {
     var hour = value.getHours();
    console.log("Brush " + value);
     updatePieChart(hour, line, station, day);
+    getDataLine(hour, line, station, day);
     //updatePieChartSB(hour, line, station, day);
 }
 

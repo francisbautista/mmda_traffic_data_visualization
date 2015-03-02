@@ -7,7 +7,7 @@ var hour = 7;
 //function getData(hour, line, station, day, fn)
 
 init(hour, line, station, day);
-
+getDataLine(hour, line, station, day);
 // init_sb(hour);
 
 function reset(){

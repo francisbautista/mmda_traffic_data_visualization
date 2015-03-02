@@ -1,8 +1,38 @@
 // InitChart();
-d3.csv("/data_vis/data/04_data/s5d04.csv", function(error, data) {
-    InitChart(data);
-    InitChartS(data);
-}) ;
+
+
+
+function getDataLine(hour, line, station, day){
+
+  switch(day){
+    case 7:
+      day = today
+      console.log("Today " + day);   
+      break;
+    case 8:
+      day = today + 1;
+        //If today is sunday
+        if (day==7){ day = 0; }  
+      console.log("Tomorrow " + day);    
+      break    
+  } 
+
+
+  var file = "../data_vis/data/0"+line+"_data/s"+station+"d0"+day+".csv";
+
+  d3.csv(file, function(error, data) {
+        InitChart(data);
+        InitChartS(data);
+    }) ;
+
+  console.log("Line for LG " + line);
+  console.log("Station for LG " + station);
+  console.log("Day for LG " + day);
+  console.log("Hour for LG " + hour);
+
+}
+
+
 
 // function updateData() {
 //
