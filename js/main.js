@@ -130,4 +130,5 @@ $('button.when-btn').click(function() {
 
 	console.log("Brush " + from_brush);
 	updatePieChart(hour, line, station, day);
+	getDataLine(hour, line, station, day);
 });
