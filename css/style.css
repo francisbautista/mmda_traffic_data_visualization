@@ -33,6 +33,13 @@ div.image#pie_img {
 	content:url(../assets/pie_chart.png);
 	margin-top: 5em;
 }
+div.image#line_img {
+	content:url(../assets/line_chart.png);
+	margin-top: 5em;
+	width:640px; /* you can use % */
+    height: auto;
+}
+
 
 .axis line {
 	fill: none;
