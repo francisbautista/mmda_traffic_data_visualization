@@ -36,7 +36,7 @@ div.image#pie_img {
 div.image#line_img {
 	content:url(../assets/line_chart.png);
 	margin-top: 5em;
-	width:640px; /* you can use % */
+	width:750px; /* you can use % */
     height: auto;
 }
 
