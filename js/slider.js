@@ -1,4 +1,6 @@
 
+
+
 formatDate = d3.time.format("%I:%M %p");
 // parameters
 var margin = {
@@ -48,6 +50,8 @@ var startingValue = def_time;
 
 //////////
 
+var startValue = timeScale(a);
+var startingValue = def_time;
 // defines brush
 var brush = d3.svg.brush()
   .x(timeScale)
@@ -132,6 +136,13 @@ function brushed() {
     updatePieChart(hour, line, station, day);
     //updatePieChartSB(hour, line, station, day);
 }
+
+
+
+
+
+
+
 
 
 //hour = brushed();

@@ -4,6 +4,9 @@ var station = $('select[name=station_select]').val();
 var day = $('button').data('int');
 
 $(function() {
+
+	
+
     $("span.line_name").html("Edsa").show();
     $("span.station_name").html("Balintawak").show();
     $("span.when").html("On Mondays").show();
@@ -89,11 +92,14 @@ $('button.when-btn').click(function() {
 
 	day = $(this).data('int');
 
+	hour = brush.extent()[0].getHours();
+
 	console.log("Day " + day);
 	
+	console.log("Brush " + hour);
+	updatePieChart(hour, line, station, day);
 
-	updatePieChart(7, line, station, day);
-	updatePieChartSB(7, line, station, day);
+
 
 });
 
