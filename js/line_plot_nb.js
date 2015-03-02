@@ -7,22 +7,23 @@ function getDataLine(hour, line, station, day){
   switch(day){
     case 7:
       day = today
-      console.log("Today " + day);   
+      console.log("Today " + day);
       break;
     case 8:
       day = today + 1;
         //If today is sunday
-        if (day==7){ day = 0; }  
-      console.log("Tomorrow " + day);    
-      break    
-  } 
-
-
+        if (day==7){ day = 0; }
+      console.log("Tomorrow " + day);
+      break
+  }
   var file = "../data_vis/data/0"+line+"_data/s"+station+"d0"+day+".csv";
 
   d3.csv(file, function(error, data) {
-        InitChart(data);
-        InitChartS(data);
+          InitChartS(data);
+          updateData(data);
+          InitChart(data);
+          alert("Changing files")
+
     }) ;
 
   console.log("Line for LG " + line);
@@ -31,39 +32,8 @@ function getDataLine(hour, line, station, day){
   console.log("Hour for LG " + hour);
 
 }
-
-
-
-// function updateData() {
-//
-// }
-
-function updateData() {
-    // Get the data again
-    d3.csv("data-alt.csv", function(error, data) {
-
-    	// Scale the range of the data again
-    	xRange.domain(d3.extent(data, function(d) { return d.nHigh; }));
-	    yRange.domain([0, d3.max(data, function(d) { return d.hour; })]);
-
-    // Select the section we want to apply our changes to
-    var svg = d3.select("#visualisationNB").transition();
-
-    // Make the changes
-        vis.select(".line")   // change the line
-            .duration(750)
-            .attr("d", valueline(data));
-        vis.select(".x.axis") // change the x axis
-            .duration(750)
-            .call(xAxis);
-        vis.select(".y.axis") // change the y axis
-            .duration(750)
-            .call(yAxis);
-
-    });
-}
-
 function InitChart(data) {
+
     var vis = d3.select("#visualisationNB"),
     WIDTH = 1125,
     HEIGHT = 400,
@@ -92,6 +62,7 @@ function InitChart(data) {
     .tickSize(5)
     .orient("left")
     .tickSubdivide(true);
+
 
     vis.append("svg:g")
     .attr("class", "x axis")
