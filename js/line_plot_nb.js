@@ -21,11 +21,15 @@ function getDataLine(hour, line, station, day){
   d3.csv(file, function(error, data) {
 
 
-      d3.selectAll("path").remove();
+      d3.select("#id1S").remove();
+      d3.select("#id2S").remove();
+      d3.select("#id3S").remove();
+      d3.select("#id1N").remove();
+      d3.select("#id2N").remove();
+      d3.select("#id3N").remove();
+
       InitChartS(data);
       InitChart(data);
-
-
   }) ;
 
   console.log("Line for LG " + line);
@@ -149,18 +153,21 @@ function InitChart(data) {
     vis.append("svg:path")
     .datum(data)
     .attr("d", line(data))
+    .attr("id", "id1N")
     .attr("stroke", "#af1111")
     .attr("stroke-width", 4)
     .attr("fill", "none");
 
     vis.append("svg:path")
     .attr("d", line2(data))
+    .attr("id", "id2N")
     .attr("stroke", "#dbd823")
     .attr("stroke-width", 4)
     .attr("fill", "none");
 
     vis.append("svg:path")
     .attr("d", line3(data))
+    .attr("id", "id3N")
     .attr("stroke", "#6fb640")
     .attr("stroke-width", 4)
     .attr("fill", "none");
@@ -310,18 +317,21 @@ function InitChartS(data) {
     vis.append("svg:path")
     .datum(data)
     .attr("d", line(data))
+    .attr("id", "id1S")
     .attr("stroke", "#af1111")
     .attr("stroke-width", 4)
     .attr("fill", "none");
 
     vis.append("svg:path")
     .attr("d", line2(data))
+    .attr("id", "id2S")
     .attr("stroke", "#dbd823")
     .attr("stroke-width", 4)
     .attr("fill", "none");
 
     vis.append("svg:path")
     .attr("d", line3(data))
+    .attr("id", "id3S")
     .attr("stroke", "#6fb640")
     .attr("stroke-width", 4)
     .attr("fill", "none");
