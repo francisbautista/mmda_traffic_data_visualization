@@ -266,6 +266,10 @@ function updateLabels(hour, line, station, day, div)
 
   });
 }
+// discrete time select
+// NB SB legend
+// describe what the percentages are
+// maybe add time select for the description link
 
 // transition for the arcs
 function arcTween(a) {
