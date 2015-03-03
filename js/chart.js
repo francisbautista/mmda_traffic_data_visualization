@@ -24,11 +24,13 @@ function init(hour, line, station, day){
     function(data) {
       var filtered =  data.filter(function(d) {return d["hour"]==hour });
       var dataset = filtered.map(function(d) { 
-         return [ +d["nHigh"], +d["nMed"], + d["nLow"] ];     
+         //return [ +d["nHigh"], +d["nMed"], + d["nLow"] ]; 
+         return [ +d["sHigh"], +d["sMed"], + d["sLow"] ];    
       });
 
       var dataset_sb = filtered.map(function(d) { 
-         return [ +d["sHigh"], +d["sMed"], + d["sLow"] ];     
+         //return [ +d["sHigh"], +d["sMed"], + d["sLow"] ];  
+         return [ +d["nHigh"], +d["nMed"], + d["nLow"] ];    
       });
 
       piePlotter(dataset[0]);
@@ -74,11 +76,13 @@ function getData(hour, line, station, day, div, fn){
         return d["hour"]==hour;
       });
       var dataset = filtered.map(function(d) { 
-         return [ +d["nHigh"], +d["nMed"], + d["nLow"] ];     
+        // return [ +d["nHigh"], +d["nMed"], + d["nLow"] ];  
+        return [ +d["sHigh"], +d["sMed"], + d["sLow"] ];    
       });
 
       var dataset_sb = filtered.map(function(d) { 
-         return [ +d["sHigh"], +d["sMed"], + d["sLow"] ];     
+        // return [ +d["sHigh"], +d["sMed"], + d["sLow"] ]; 
+        return [ +d["nHigh"], +d["nMed"], + d["nLow"] ];     
       });
 
       if (div=="#chart"){
