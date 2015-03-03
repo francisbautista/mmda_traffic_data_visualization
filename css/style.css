@@ -8,7 +8,13 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 #about_head {
-	background-color: #fff;
+	background: url(../assets/splash_img.jpg) no-repeat center center fixed;
+	/*-webkit-filter: blur(5px);*/
+	/*-moz-filter: blur(5px);
+	-o-filter: blur(5px);
+	-ms-filter: blur(5px);
+	filter: blur(5px);
+	z-index: 1;*/
 }
 .navbar-inverse {
 	margin-bottom:0;
@@ -18,6 +24,8 @@ section { height: 100vh; }
 
 .about_splash {
 	margin-top: 15em;
+	/*z-index: 999;
+	position: fixed;*/
 }
 
 .about_desc {
@@ -29,7 +37,7 @@ section { height: 100vh; }
 #support_text {
 	margin-top:0;
 	padding-top:0;
-	color: #868787;
+	color: #fff;
 	font-size: 1.5em;
 }
 div.image#pie_img {
